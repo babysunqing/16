@@ -1,0 +1,28 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": [
+    {
+      "memberPointFlowId": "1",
+      "memberPointFlowNum": 500,
+      "memberPointFlowType": 0,
+      "memberPointFlowDesc": "兑换商品",
+      "memberPointFlowTime": 1511222400,
+      "memberId": "1",
+      "userId": "1",
+      "rootOrderId": "1",
+      "pointOrderId": "1"
+    },
+    {
+      "memberPointFlowId": "2",
+      "memberPointFlowNum": 331,
+      "memberPointFlowType": 1,
+      "memberPointFlowDesc": "充值",
+      "memberPointFlowTime": 1511163000,
+      "memberId": "1",
+      "userId": "1",
+      "rootOrderId": "2",
+      "pointOrderId": "2"
+    }
+  ]
+}

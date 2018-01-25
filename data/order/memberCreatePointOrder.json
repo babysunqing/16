@@ -1,0 +1,19 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": {
+    "pointOrderId": "XEkljrt09IiANCstA4M",
+    "userId": "1",
+    "memberId": "2",
+    "pointOrderDesc": "最美生活飞利浦空气净化器",
+    "pointPayPoint": 23000,
+    "pointOriPrice": 24000,
+    "pointCostPrice": 23000,
+    "pointOrderNum": 2,
+    "createTime": 1512110495,
+    "takeGoodsId":"ojkoj",
+    "chooseTypeId": null,
+    "goodsId": "1",
+    "carriage": 2500
+  }
+}

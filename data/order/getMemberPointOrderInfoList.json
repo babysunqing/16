@@ -1,0 +1,111 @@
+{
+    "code": 0,
+    "errmsg": "ok",
+    "data": [
+        {
+            "pointOrder": {
+                "pointOrderId": "eVgSGVZ68WtJ9nNppr3",
+                "userId": "1",
+                "memberId": "xEih4mDHKJfsEEbj7U9",
+                "pointOrderDesc": "欧纺翡翠棉四件套-漫步云端",
+                "createTime": 1514516706,
+                "takeGoodsId": "FtEhTCTLzAplezp5alG",
+                "goodsId": "kWuqYZzH3kKyRUBR88i",
+                "pointOrderNum": 1,
+                "carriage": 4500,
+                "pointCostPrice": 6200,
+                "pointOriPrice": 98800,
+                "pointPayPoint": 75000
+            },
+            "goods": {
+                "goodsId": "kWuqYZzH3kKyRUBR88i",
+                "goodsBannerImgs": "[{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/E2C0C223-B28D-48F9-8B9D-B135DF8F510E.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/E2C0C223-B28D-48F9-8B9D-B135DF8F510E.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/ABC0D259-05C2-4B21-8ADE-5B6EF3C19C99.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/ABC0D259-05C2-4B21-8ADE-5B6EF3C19C99.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/225519B5-A4A5-429C-9EAE-5C5C68532865.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/225519B5-A4A5-429C-9EAE-5C5C68532865.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/B10CBB1B-EC4A-4230-8E03-FE5073F3CE67.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/B10CBB1B-EC4A-4230-8E03-FE5073F3CE67.jpg'}]",
+                "goodsName": "欧纺翡翠棉四件套-漫步云端",
+                "goodsPrice": 75000,
+                "goodsCarriageStartPrice": 4500,
+                "goodsCarriageAddPrice": 3500,
+                "goodsDetailImg": "[{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/15E7DDFC-198A-4357-8796-80EB08DF8C24.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/15E7DDFC-198A-4357-8796-80EB08DF8C24.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/6D1D37E8-4109-4965-8BF6-38F9A35AF569.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/6D1D37E8-4109-4965-8BF6-38F9A35AF569.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/20A56E1C-8199-4D83-8287-82B3E6B8B517.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/20A56E1C-8199-4D83-8287-82B3E6B8B517.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/FBC74117-31CD-445A-899A-7B214886F9EE.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/FBC74117-31CD-445A-899A-7B214886F9EE.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/B2B74CDA-BDA2-4C88-98A9-1AFDDC084722.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/B2B74CDA-BDA2-4C88-98A9-1AFDDC084722.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/783A4271-9BB5-428C-8D3D-D439ECC8E0DC.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/783A4271-9BB5-428C-8D3D-D439ECC8E0DC.jpg'}]",
+                "goodsShowingImg": "{\"sourceUrl\":\"http://bestlife-1253700700.cosgz.myqcloud.com/goods/BE241976-2727-412A-931B-1EA522F77AE2.jpg\",\"cdnUrl\":\"http://bestlife-1253700700.file.myqcloud.com/goods/BE241976-2727-412A-931B-1EA522F77AE2.jpg\"}",
+                "goodsOriPrice": 98800,
+                "goodsType": 1,
+                "goodsCostPrice": 6200,
+                "goodsStatus": 0
+            },
+            "takeGoods": {
+                "takeGoodsId": "FtEhTCTLzAplezp5alG",
+                "addressId": "xrnUJVilbm1xwQ6D09p",
+                "carriage": 4500,
+                "expressId": "",
+                "fromType": "point",
+                "rootOrderId": "eVgSGVZ68WtJ9nNppr3",
+                "lotteryId": "",
+                "takeGoodsNum": 1,
+                "profit": -6200,
+                "expressName": "",
+                "expressStatus": "undeli"
+            }
+        },
+        {
+            "pointOrder": {
+                "pointOrderId": "Puy3msYlQWGXrhynANQ",
+                "userId": "1",
+                "memberId": "xEih4mDHKJfsEEbj7U9",
+                "pointOrderDesc": "欧纺翡翠棉四件套-漫步云端",
+                "createTime": 1514517117,
+                "takeGoodsId": null,
+                "goodsId": "kWuqYZzH3kKyRUBR88i",
+                "pointOrderNum": 1,
+                "carriage": 4500,
+                "pointCostPrice": 6200,
+                "pointOriPrice": 98800,
+                "pointPayPoint": 75000
+            },
+            "goods": {
+                "goodsId": "kWuqYZzH3kKyRUBR88i",
+                "goodsBannerImgs": "[{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/E2C0C223-B28D-48F9-8B9D-B135DF8F510E.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/E2C0C223-B28D-48F9-8B9D-B135DF8F510E.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/ABC0D259-05C2-4B21-8ADE-5B6EF3C19C99.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/ABC0D259-05C2-4B21-8ADE-5B6EF3C19C99.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/225519B5-A4A5-429C-9EAE-5C5C68532865.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/225519B5-A4A5-429C-9EAE-5C5C68532865.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/B10CBB1B-EC4A-4230-8E03-FE5073F3CE67.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/B10CBB1B-EC4A-4230-8E03-FE5073F3CE67.jpg'}]",
+                "goodsName": "欧纺翡翠棉四件套-漫步云端",
+                "goodsPrice": 75000,
+                "goodsCarriageStartPrice": 4500,
+                "goodsCarriageAddPrice": 3500,
+                "goodsDetailImg": "[{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/15E7DDFC-198A-4357-8796-80EB08DF8C24.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/15E7DDFC-198A-4357-8796-80EB08DF8C24.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/6D1D37E8-4109-4965-8BF6-38F9A35AF569.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/6D1D37E8-4109-4965-8BF6-38F9A35AF569.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/20A56E1C-8199-4D83-8287-82B3E6B8B517.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/20A56E1C-8199-4D83-8287-82B3E6B8B517.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/FBC74117-31CD-445A-899A-7B214886F9EE.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/FBC74117-31CD-445A-899A-7B214886F9EE.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/B2B74CDA-BDA2-4C88-98A9-1AFDDC084722.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/B2B74CDA-BDA2-4C88-98A9-1AFDDC084722.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/783A4271-9BB5-428C-8D3D-D439ECC8E0DC.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/783A4271-9BB5-428C-8D3D-D439ECC8E0DC.jpg'}]",
+                "goodsShowingImg": "{\"sourceUrl\":\"http://bestlife-1253700700.cosgz.myqcloud.com/goods/BE241976-2727-412A-931B-1EA522F77AE2.jpg\",\"cdnUrl\":\"http://bestlife-1253700700.file.myqcloud.com/goods/BE241976-2727-412A-931B-1EA522F77AE2.jpg\"}",
+                "goodsOriPrice": 98800,
+                "goodsType": 1,
+                "goodsCostPrice": 6200,
+                "goodsStatus": 0
+            },
+            "takeGoods": null
+        },
+        {
+            "pointOrder": {
+                "pointOrderId": "zAjn7U6AXIKVnTZ62nM",
+                "userId": "1",
+                "memberId": "xEih4mDHKJfsEEbj7U9",
+                "pointOrderDesc": "臻品碳化驼毛被",
+                "createTime": 1514515318,
+                "takeGoodsId": null,
+                "goodsId": "6itHONLpsYho8s3uYnm",
+                "pointOrderNum": 1,
+                "carriage": 4500,
+                "pointCostPrice": 12500,
+                "pointOriPrice": 158800,
+                "pointPayPoint": 150000
+            },
+            "goods": {
+                "goodsId": "6itHONLpsYho8s3uYnm",
+                "goodsBannerImgs": "[{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/2D58C5AE-113D-418D-8F11-D5A9D076445D.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/2D58C5AE-113D-418D-8F11-D5A9D076445D.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/04022E27-AF71-4DAB-8B0B-2102C74FD87B.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/04022E27-AF71-4DAB-8B0B-2102C74FD87B.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/B8076219-D797-4049-9B15-434FC77F5B20.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/B8076219-D797-4049-9B15-434FC77F5B20.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/DA5D80B8-9192-434E-8AF3-42242C9A993A.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/DA5D80B8-9192-434E-8AF3-42242C9A993A.jpg'}]",
+                "goodsName": "臻品碳化驼毛被",
+                "goodsPrice": 150000,
+                "goodsCarriageStartPrice": 4500,
+                "goodsCarriageAddPrice": 3000,
+                "goodsDetailImg": "[{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/FCC70BCA-1ED1-43A2-BF0A-0573EFED2648.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/FCC70BCA-1ED1-43A2-BF0A-0573EFED2648.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/1C82ED1D-4B26-4D27-8519-C3A73258DB9B.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/1C82ED1D-4B26-4D27-8519-C3A73258DB9B.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/F7300748-FC87-46D6-8BB4-FB57624D6847.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/F7300748-FC87-46D6-8BB4-FB57624D6847.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/C7F6B5B9-CA69-4EAF-952D-C343C1446B3E.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/C7F6B5B9-CA69-4EAF-952D-C343C1446B3E.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/7EAC9B08-6D5D-48D4-A4E6-569A123EDF99.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/7EAC9B08-6D5D-48D4-A4E6-569A123EDF99.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/189E771F-642A-4B51-8B98-2911415B375A.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/189E771F-642A-4B51-8B98-2911415B375A.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/CBCCDCDC-4745-4174-9121-64B41011344C.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/CBCCDCDC-4745-4174-9121-64B41011344C.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/9AF9F4E5-4FD2-44B9-8C60-5A70A1989A99.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/9AF9F4E5-4FD2-44B9-8C60-5A70A1989A99.jpg'}]",
+                "goodsShowingImg": "{\"sourceUrl\":\"http://bestlife-1253700700.cosgz.myqcloud.com/goods/ED6816FC-A654-422F-BCEC-6B1D0E5970EF.jpg\",\"cdnUrl\":\"http://bestlife-1253700700.file.myqcloud.com/goods/ED6816FC-A654-422F-BCEC-6B1D0E5970EF.jpg\"}",
+                "goodsOriPrice": 158800,
+                "goodsType": 1,
+                "goodsCostPrice": 12500,
+                "goodsStatus": 0
+            },
+            "takeGoods": null
+        }
+    ]
+}

@@ -1,0 +1,107 @@
+{
+    "code": 0,
+    "errmsg": "ok",
+    "data": [
+        {
+            "rootOrder": {
+                "rootOrderId": "w0Nf5O7TmzQJ1FLy6fX",
+                "userId": "II8mYF09MFemg00CjHZ",
+                "memberId": "ThrFuMuLm7IqTjxOq54",
+                "orderStatus": "lottery",
+                "orderDesc": "不锈钢餐卡通勺子",
+                "payPrice": 3200,
+                "oriPrice": 3800,
+                "costPrice": 2500,
+                "orderNum": 1,
+                "createTime": 1516617630,
+                "chooseTypeId": "RISXAPHVV87aIZ8Tdki",
+                "goodsId": "DbpXZQdUli8vqZOKziC",
+                "carriage": 2000
+            },
+            "lottery": {
+                "lotteryId": "RISXAPHVV87aIZ8Tdki",
+                "lotteryType": "redpacket",
+                "lotteryResult": "fail",
+                "lotteryFee": 96,
+                "rootOrderId": "w0Nf5O7TmzQJ1FLy6fX",
+                "lotteryChooseType": "init",
+                "lotteryChooseTypeId": "",
+                "lotteryOddEvenId": "",
+                "lotteryOddEvenChoose": ""
+            },
+            "convertToPoint": null,
+            "refund": null,
+            "takeGoods": null,
+            "address": null,
+            "goods": {
+                "goodsId": "DbpXZQdUli8vqZOKziC",
+                "goodsBannerImgs": "[{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/C2A585B4-0680-48F8-A916-ABFB84722109.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/C2A585B4-0680-48F8-A916-ABFB84722109.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/0302307F-840E-459B-86A4-F61C37B47170.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/0302307F-840E-459B-86A4-F61C37B47170.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/9EC598D3-7270-4CDD-822E-B34612C8F50C.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/9EC598D3-7270-4CDD-822E-B34612C8F50C.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/BDD85A55-1C33-4FBF-8468-D8D83178E5CF.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/BDD85A55-1C33-4FBF-8468-D8D83178E5CF.jpg'}]",
+                "goodsName": "不锈钢餐卡通勺子",
+                "goodsPrice": 3200,
+                "goodsCarriageStartPrice": 2000,
+                "goodsCarriageAddPrice": 1000,
+                "goodsDetailImg": "[{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/29AD07FD-EE86-4344-A9CB-58068FD14211.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/29AD07FD-EE86-4344-A9CB-58068FD14211.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/12B37B85-C6B9-43F3-817C-2277DA789FE2.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/12B37B85-C6B9-43F3-817C-2277DA789FE2.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/8D5E9F51-34A4-47BA-87ED-DF7CB42E1319.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/8D5E9F51-34A4-47BA-87ED-DF7CB42E1319.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/B046D940-EDC2-4142-81CC-DA5C5BB45552.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/B046D940-EDC2-4142-81CC-DA5C5BB45552.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/2F0BC9A9-27FE-4002-938A-7C9E1376F001.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/2F0BC9A9-27FE-4002-938A-7C9E1376F001.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/53480C5C-AFC6-4129-8F87-4695B5617ECC.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/53480C5C-AFC6-4129-8F87-4695B5617ECC.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/546F8FE0-16BC-4551-8BFE-B668AA410B42.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/546F8FE0-16BC-4551-8BFE-B668AA410B42.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/C028A495-CD76-43E5-976A-A90557683761.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/C028A495-CD76-43E5-976A-A90557683761.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/D221161F-BE0E-4DBD-A311-DA561EE5EC7E.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/D221161F-BE0E-4DBD-A311-DA561EE5EC7E.jpg'}]",
+                "goodsShowingImg": "{\"sourceUrl\":\"http://bestlife-1253700700.cosgz.myqcloud.com/goods/18608C80-32C4-4E61-89DB-93B5DE319723.jpg\",\"cdnUrl\":\"http://bestlife-1253700700.file.myqcloud.com/goods/18608C80-32C4-4E61-89DB-93B5DE319723.jpg\"}",
+                "goodsOriPrice": 3800,
+                "goodsType": 0,
+                "goodsCostPrice": 2500,
+                "goodsStatus": 0
+            },
+            "guessOddEven": null
+        },
+        {
+            "rootOrder": {
+                "rootOrderId": "auHIFn3BLhJMgchxW8r",
+                "userId": "II8mYF09MFemg00CjHZ",
+                "memberId": "ThrFuMuLm7IqTjxOq54",
+                "orderStatus": "lottery",
+                "orderDesc": "意大利AQUAFRES美白牙膏",
+                "payPrice": 18000,
+                "oriPrice": 22500,
+                "costPrice": 1800,
+                "orderNum": 1,
+                "createTime": 1516617510,
+                "chooseTypeId": "ooQ3m5teLz5LoD4lhkw",
+                "goodsId": "IW9d4eO4WCSFLW9J5xT",
+                "carriage": 3000
+            },
+            "lottery": {
+                "lotteryId": "ooQ3m5teLz5LoD4lhkw",
+                "lotteryType": "oddeven",
+                "lotteryResult": "success",
+                "lotteryFee": 540,
+                "rootOrderId": "auHIFn3BLhJMgchxW8r",
+                "lotteryChooseType": "init",
+                "lotteryChooseTypeId": "",
+                "lotteryOddEvenId": "663104",
+                "lotteryOddEvenChoose": "odd"
+            },
+            "convertToPoint": null,
+            "refund": null,
+            "takeGoods": null,
+            "address": null,
+            "goods": {
+                "goodsId": "IW9d4eO4WCSFLW9J5xT",
+                "goodsBannerImgs": "[{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/3CE83EC7-E69F-4459-AA5B-6762AF4A6164.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/3CE83EC7-E69F-4459-AA5B-6762AF4A6164.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/4111D872-30C3-4EEC-815A-039FAC5D196F.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/4111D872-30C3-4EEC-815A-039FAC5D196F.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/6845FDB9-53D2-47D6-B761-0A8AFC95D2F9.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/6845FDB9-53D2-47D6-B761-0A8AFC95D2F9.jpg'}]",
+                "goodsName": "意大利AQUAFRES美白牙膏",
+                "goodsPrice": 18000,
+                "goodsCarriageStartPrice": 3000,
+                "goodsCarriageAddPrice": 1500,
+                "goodsDetailImg": "[{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/4242BDB0-DC7E-4DBD-B9FD-D136F916920B.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/4242BDB0-DC7E-4DBD-B9FD-D136F916920B.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/7BDC5381-35A8-497C-BB36-3E9F40DC4380.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/7BDC5381-35A8-497C-BB36-3E9F40DC4380.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/68F5AA62-225A-4132-9AE3-DA7912887E52.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/68F5AA62-225A-4132-9AE3-DA7912887E52.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/1128FD56-BA50-47A2-9677-558FF8212DEE.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/1128FD56-BA50-47A2-9677-558FF8212DEE.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/4E79776A-4CCC-40D8-BAB8-9900BC29CEEA.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/4E79776A-4CCC-40D8-BAB8-9900BC29CEEA.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/53F572EF-0454-4F40-8FAC-ADBE2F76F191.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/53F572EF-0454-4F40-8FAC-ADBE2F76F191.jpg'},{'sourceUrl':'http://bestlife-1253700700.cosgz.myqcloud.com/goods/81817510-CEBD-41EA-86D2-16AC9CBDED2B.jpg','cdnUrl':'http://bestlife-1253700700.file.myqcloud.com/goods/81817510-CEBD-41EA-86D2-16AC9CBDED2B.jpg'}]",
+                "goodsShowingImg": "{\"sourceUrl\":\"http://bestlife-1253700700.cosgz.myqcloud.com/goods/09CC1B87-04EA-4AC3-8AF5-2B0C6FF55BC7.jpg\",\"cdnUrl\":\"http://bestlife-1253700700.file.myqcloud.com/goods/09CC1B87-04EA-4AC3-8AF5-2B0C6FF55BC7.jpg\"}",
+                "goodsOriPrice": 22500,
+                "goodsType": 0,
+                "goodsCostPrice": 1800,
+                "goodsStatus": 0
+            },
+            "guessOddEven": {
+                "guessOddEvenId": 787,
+                "oddEvenNum": "07,10,01,06,03,08,05,02,04,09",
+                "oddEvenPeriod": 663104,
+                "openTime": 1516619556,
+                "insertTime": 1516619560,
+                "oddEvenResult": "odd"
+            }
+        }
+    ]
+}

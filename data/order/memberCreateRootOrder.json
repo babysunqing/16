@@ -1,0 +1,19 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": {
+    "rootOrderId": "XEkljrt09IiANCstA4M",
+    "userId": "1",
+    "memberId": "2",
+    "orderStatus": "init",
+    "orderDesc": "最美生活飞利浦空气净化器",
+    "payPrice": 23000,
+    "oriPrice": 24000,
+    "costPrice": 23000,
+    "orderNum": 2,
+    "createTime": 1512110495,
+    "chooseTypeId": null,
+    "goodsId": "1",
+    "carriage": 2500
+  }
+}

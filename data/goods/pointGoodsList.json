@@ -1,0 +1,33 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": [
+    {
+      "goodsId": "1",
+      "goodsName": "最美生活飞利浦空气净化器",
+      "goodsPrice": "23000",
+      "goodsShowingImg": {
+        "sourceUrl":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=406561014,1931661921&fm=27&gp=0.jpg",
+        "cdnUrl":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=770930066,4213322422&fm=11&gp=0.jpg"
+      }
+    },
+    {
+      "goodsId": "2",
+      "goodsName": "空气净化器",
+      "goodsPrice": "10350",
+      "goodsShowingImg":{
+        "sourceUrl":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=770930066,4213322422&fm=11&gp=0.jpg",
+        "cdnUrl":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=770930066,4213322422&fm=11&gp=0.jpg"
+      } 
+    },
+    {
+      "goodsId": "3",
+      "goodsName": "最美生活飞利浦空气净化器最美生活飞利浦空气",
+      "goodsPrice": "55000",
+      "goodsShowingImg":{
+        "sourceUrl":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=770930066,4213322422&fm=11&gp=0.jpg",
+        "cdnUrl":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=770930066,4213322422&fm=11&gp=0.jpg"
+      } 
+    }
+  ]
+}

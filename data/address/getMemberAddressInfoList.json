@@ -1,0 +1,24 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": [
+    {
+      "addressId": "1",
+      "addressName": "李先生",
+      "addressPhone": "15016500325",
+      "addressPositionTitle": "广东省深圳市宝安区",
+      "addressPositionDetail": "壹号智库",
+      "memberId": "1",
+      "addressStatus": 0
+    },
+    {
+      "addressId": "2",
+      "addressName": "李先生2",
+      "addressPhone": "15016500325",
+      "addressPositionTitle": "广东省深圳市南山区",
+      "addressPositionDetail": "科技园",
+      "memberId": "1",
+      "addressStatus": 0
+    }
+  ]
+}

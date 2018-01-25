@@ -1,0 +1,33 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": [
+    {
+      "memberCashFlowId": "1",
+      "memberCashFlowNum": 4000, 
+      "memberCashFlowType": 1, 
+      "memberCashFlowDesc": "充值", 
+      "memberCashFlowTime": 1511163000, 
+      "memberId": "1",
+      "userId": ""
+    },
+    {
+      "memberCashFlowId": "2",
+      "memberCashFlowNum": 500, 
+      "memberCashFlowType": 0, 
+      "memberCashFlowDesc": "购买商品", 
+      "memberCashFlowTime": 1511222400, 
+      "memberId": "1",
+      "userId": "1"
+    },
+    {
+      "memberCashFlowId": "3",
+      "memberCashFlowNum": 200, 
+      "memberCashFlowType": 1, 
+      "memberCashFlowDesc": "退款",
+      "memberCashFlowTime": 1511066110,
+      "memberId": "1",
+      "userId": "1"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{ 
+	"code": 0,
+  	"errmsg": "ok",
+  	"data":{
+		"country": "中国", 
+		"unionid": "oWRBcswqfzTHQ4h5TmbkpP1RHZzw", 
+		"province": "广东", "city": "深圳",
+	 	"openid": "owwmSt1gxmNNeNEcrZxgi3vjscPg",
+	  	"sex": 2,
+	    "nickname": "晴子",
+	    "headimgurl": "http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL9xllzbVTvVqgO6DS9Eiby60dObu8KNkZ2pyiazuCGc6T403pLeLufxKBZ5wos8dXrhqNmuTG2dSLw/0",
+	    "language": "zh_CN", 
+	    "privilege": []
+	} 
+}

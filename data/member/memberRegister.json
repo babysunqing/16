@@ -1,0 +1,25 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": {
+    "memberId": "DArjbpTHIYaqwxgojBy",
+    "openid": "15489",
+    "phone": "15016512358",
+    "balance": 0,
+    "firstClassSellerMemberId": "",
+    "secondClassSellerMemberId": "",
+    "userId": "1",
+    "point": 0,
+    "totalPayoff": 0,
+    "totalPayment": 0,
+    "businessGroupId": "3GI7T0JLHVr6gjCCvJU",
+    "wxNickName": 14143,
+    "trueName": "晴子",
+    "identificationNumber": null,
+    "freezeMoney": 0,
+    "registerTime": 1516331511,
+    "lastLoginTime": 1516331511,
+    "headUrl": "http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL9xllzbVTvVqgO6DS9Eiby60dObu8KNkZ2pyiazuCGc6T403pLeLufxKBZ5wos8dXrhqNmuTG2dSLw/0",
+    "wxDefaultUser": 0
+  }
+}

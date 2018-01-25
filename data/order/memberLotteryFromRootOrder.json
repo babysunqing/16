@@ -1,0 +1,32 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": {
+    "rootOrder": {
+      "rootOrderId": "XEkljrt09IiANCstA4M",
+      "userId": "1",
+      "memberId": "1",
+      "orderStatus": "lottery",
+      "orderDesc": "最美生活飞利浦空气净化器",
+      "payPrice": 0,
+      "oriPrice": 0,
+      "costPrice": 0,
+      "orderNum": 0,
+      "createTime": 0,
+      "chooseTypeId": "MRRHLkMdtj0sTqWVCHL",
+      "goodsId": "8xayVacwiNuu1mTOOkg",
+      "carriage": 0
+    },
+    "lottery": {
+      "lotteryId": "MRRHLkMdtj0sTqWVCHL",
+      "lotteryType": "oddeven",
+      "lotteryResult": "init",
+      "lotteryFee": 0,
+      "rootOrderId": "1",
+      "lotteryChooseType": "init",
+      "lotteryChooseTypeId": null,
+      "lotteryOddEvenId": null,
+      "lotteryOddEvenChoose": "odd"
+    }
+  }
+}

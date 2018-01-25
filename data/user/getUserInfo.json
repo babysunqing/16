@@ -1,0 +1,77 @@
+{
+    "code": 0,
+    "errmsg": "ok",
+    "data": [
+        {
+            "redpacketSuccessRate": 50,
+            "pointMoneyExchangeRate": 1,
+            "lotteryRate":1,
+            "banner": [{
+                    "sourceUrl": "http://bestlife-1253700700.cosgz.myqcloud.com/goods/97090322-2AD5-4987-B610-5C470D010449.png",
+                    "cdnUrl": ""
+            }],
+            "isAdmin": "0",
+            "userName": "经销商1",
+            "refundRateOnLotterySuccess": 160,
+            "userId": "1",
+            "secondClassSellerFeePercent": 0,
+            "password": "14e1b600b1fd579f47433b88e8d85291",
+            "defaultBusinessGroupId": "0",
+            "platformFeePercent": 0,
+            "takegoodsRateOnLotterySuccess": 2,
+            "loginName": "default",
+            "logo": {
+                "sourceUrl": "http://bestlife-1253700700.cosgz.myqcloud.com/goods/97090322-2AD5-4987-B610-5C470D010449.png"
+            },
+            "userCanPayoffNum": 62685600,
+            "userCashDeposit": 0,
+            "firstClassSellerFeePercent": 0
+        },
+         {
+            "redpacketSuccessRate": 50,
+            "pointMoneyExchangeRate": 1,
+            "banner": [{
+                    "sourceUrl": "http://bestlife-1253700700.cosgz.myqcloud.com/goods/97090322-2AD5-4987-B610-5C470D010449.png"
+            }],
+            "isAdmin": "0",
+            "userName": "经销商2",
+            "refundRateOnLotterySuccess": 160,
+            "userId": "admin1",
+            "secondClassSellerFeePercent": 0,
+            "password": "14e1b600b1fd579f47433b88e8d85291",
+            "defaultBusinessGroupId": "0",
+            "platformFeePercent": 0,
+            "takegoodsRateOnLotterySuccess": 2,
+            "loginName": "default",
+            "logo": {
+                "sourceUrl": "http://bestlife-1253700700.cosgz.myqcloud.com/goods/97090322-2AD5-4987-B610-5C470D010449.png"
+            },
+            "userCanPayoffNum": 62685600,
+            "userCashDeposit": 0,
+            "firstClassSellerFeePercent": 0
+        },
+        {
+            "redpacketSuccessRate": 50,
+            "pointMoneyExchangeRate": 1,
+            "banner": [{
+                    "sourceUrl": "http://bestlife-1253700700.cosgz.myqcloud.com/goods/97090322-2AD5-4987-B610-5C470D010449.png"
+            }],
+            "isAdmin": "0",
+            "userName": "经销商3",
+            "refundRateOnLotterySuccess": 160,
+            "userId": "haha",
+            "secondClassSellerFeePercent": 0,
+            "password": "14e1b600b1fd579f47433b88e8d85291",
+            "defaultBusinessGroupId": "0",
+            "platformFeePercent": 0,
+            "takegoodsRateOnLotterySuccess": 2,
+            "loginName": "default",
+            "logo": {
+                "sourceUrl": "http://bestlife-1253700700.cosgz.myqcloud.com/goods/97090322-2AD5-4987-B610-5C470D010449.png"
+            },
+            "userCanPayoffNum": 62685600,
+            "userCashDeposit": 0,
+            "firstClassSellerFeePercent": 0
+        }
+    ]
+}

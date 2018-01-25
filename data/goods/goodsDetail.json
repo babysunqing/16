@@ -1,0 +1,38 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": {
+    "goodsId": "1",
+    "goodsBannerImgs": [
+      {
+        "sourceUrl": "http://bestlife-1253700700.cosgz.myqcloud.com/goods/7DBA6ABA-B4C1-4522-8C5E-86A60ADEDC89.png",
+        "cdnUrl": "http://bestlife-1253700700.file.myqcloud.com/goods/7DBA6ABA-B4C1-4522-8C5E-86A60ADEDC89.png"
+      },
+      {
+        "sourceUrl": "http://bestlife-1253700700.cosgz.myqcloud.com/goods/641794A5-E6F5-40B2-8F43-3B9F709346FF.png",
+        "cdnUrl": "http://bestlife-1253700700.file.myqcloud.com/goods/641794A5-E6F5-40B2-8F43-3B9F709346FF.png"
+      }
+    ],
+    "goodsName": "最美生活飞利浦空气净化器",
+    "goodsPrice": "23000",
+    "goodsCarriageStartPrice": "2000",
+    "goodsCarriageAddPrice": "500",
+    "goodsDetailImg": [
+      {
+        "sourceUrl": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2950161753,229414186&fm=200&gp=0.jpg",
+        "cdnUrl": "http://bestlife-1253700700.file.myqcloud.com/goods/641794A5-E6F5-40B2-8F43-3B9F709346FF.png"
+      },
+      {
+        "sourceUrl": "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3034550788,1048580024&fm=200&gp=0.jpg",
+        "cdnUrl": "http://bestlife-1253700700.file.myqcloud.com/goods/7DBA6ABA-B4C1-4522-8C5E-86A60ADEDC89.png"
+      }
+    ],
+    "goodsShowingImg": {
+      "sourceUrl": "http://bestlife-1253700700.cosgz.myqcloud.com/goods/87908B94-F58F-417D-86C4-07AEA7C0CCB3.png",
+      "cdnUrl": "http://bestlife-1253700700.file.myqcloud.com/goods/87908B94-F58F-417D-86C4-07AEA7C0CCB3.png"
+    },
+    "goodsOriPrice": "24000",
+    "goodsType": 0,
+    "goodsCostPrice": "23000"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": {
+    "bankcardId": "123132",
+    "bankcardUsername": "名字",
+    "bankcardIdentificationNumber": "342201199603127558",
+    "status": 0,
+    "memberId": "123132",
+    "userId": "1",
+    "bankId": "2131312",
+    "bankName": "中国工商银行",
+    "bankcardPhone": "15016500123"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": [
+    {
+      "bankcardId": "6217003250006852621",
+      "bankcardUsername": "",
+      "bankcardIdentificationNumber": "6777003200325698621",
+      "status": 0,
+      "memberId": "1",
+      "userId": "1",
+      "bankId": "1",
+      "bankName": "中国工商银行",
+      "bankcardPhone": "15016500321"
+    },
+    {
+      "bankcardId": "8000951265841238000",
+      "bankcardUsername": "",
+      "bankcardIdentificationNumber": "6777003200321235",
+      "status": 0,
+      "memberId": "1",
+      "userId": "1",
+      "bankId": "1",
+      "bankName": "中国建设银行",
+      "bankcardPhone": "15016500321"
+    }
+  ]
+}

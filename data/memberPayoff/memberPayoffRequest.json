@@ -1,0 +1,17 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": {
+    "memberPayoffId": "jvSrvQg7DkN6hO98hmp",
+    "memberPayoffTotalNum": 0,
+    "memberPayoffStatus": null,
+    "memberPayoffServiceCharge": null,
+    "memberPayoffActualNum": null,
+    "memberPayoffType": "string",
+    "memberPayoffBankcardId": "string",
+    "memberPayoffRequestTime": 297943,
+    "memberPayoffPayTime": null,
+    "transactionId": null,
+    "memberId": "string"
+  }
+}

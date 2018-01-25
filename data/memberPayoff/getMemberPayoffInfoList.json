@@ -1,0 +1,19 @@
+{
+  "code": 0,
+  "errmsg": "ok",
+  "data": [
+    {
+      "memberPayoffId": "",
+      "memberPayoffTotalNum": 0,
+      "memberPayoffStatus": "init",
+      "memberPayoffServiceCharge": 0,
+      "memberPayoffActualNum": 0,
+      "memberPayoffType": "",
+      "memberPayoffBankcardId": "",
+      "memberPayoffRequestTime": 0,
+      "memberPayoffPayTime": 0,
+      "transactionId": "",
+      "memberId": "1"
+    }
+  ]
+}
