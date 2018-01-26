@@ -229,9 +229,7 @@ export default {
                 // 有默认 进入到默认
                 // alert('从1，进来有默认经销商')
                 var index = self.indexForMemberChooseDefaultUserId
-
                 var member = self.resData[index].member
-                // localStorage.setItem("phone",self.resData[index].member.phone)
                 sessionStorage.setItem("myInfo",JSON.stringify(member))
                 sessionStorage.setItem("memberId",member.memberId)
                 sessionStorage.setItem("userId",member.userId)
@@ -262,24 +260,18 @@ export default {
               return
             }
           }
-
-          self.getUserInfo()
-
-
         }).catch(function(err){
             alert(err)
         })
-      }  
-      
+      }
     },
   },
   mounted (){
   	let self = this
   	self.$refs.tabbar.hoverBgInfo('index')
-  	
   }
 }
-</script> 
+</script>
 
 <style scoped>
 .container{}
