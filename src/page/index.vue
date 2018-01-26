@@ -117,6 +117,9 @@ export default {
 	    }
 	}
 
+	if(sessionStorage.getItem('banner') != null){
+		this.banner = JSON.parse(sessionStorage.getItem('banner'))
+	}
 	//获取商品
     axios.get('/bestlifeweb/goods/goodsList')
     .then(function (res) {
@@ -153,7 +156,8 @@ export default {
 	        sessionStorage.setItem("lotteryRate",self.dataList[0].lotteryRate)
 
 	        if(self.dataList != ''){
-	        	self.banner = self.dataList[1].banner
+	        	self.banner = self.dataList[0].banner
+	        	sessionStorage.setItem("banner",JSON.stringify(self.banner))
 	        }
 	    }).catch(function(err){
 	        alert(err)
