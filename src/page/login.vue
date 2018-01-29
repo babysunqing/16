@@ -15,7 +15,7 @@
       placeholder="请输入验证码" 
       v-model="userInputCode" />
 
-    <span id="yzBtn" @click="getLoginCode()">获取验证码</span>
+    <span id="loginBtn" @click="getCode()">获取验证码</span>
 
     <router-link to="/register">  
       <div class="register">立即注册</div>
@@ -44,20 +44,20 @@ export default {
     }
   },
   methods:{
-    setTimeLogin: function () {
+    setTime: function () {
       let self = this
         if (self.countdown === 0) {
-          document.getElementById('yzBtn').innerHTML = '重新获取'
+          document.getElementById('loginBtn').innerHTML = '重新获取'
           return
         } else {
-          document.getElementById('yzBtn').innerHTML = '' + this.countdown + 's后重试'
+          document.getElementById('loginBtn').innerHTML = '' + this.countdown + 's后重试'
           this.countdown--
         }
         setTimeout(function () {   
-          self.setTimeLogin()     
+          self.setTime()     
         }, 1000) 
     },
-    getLoginCode: function () { //获取短信验证码
+    getCode: function () { //获取短信验证码
       if(this.phone.length == 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/.test(this.phone)){
         if(this.countdown > 0){
           return
@@ -67,7 +67,7 @@ export default {
             self.identifyingCode = res.data.data
           })
           this.countdown = 60 
-          this.setTimeLogin()
+          this.setTime()
         }
       }else{
         alert('请填写正确的手机号码！')
@@ -121,6 +121,7 @@ export default {
             // 没有注册过
             if(self.resData == null || self.resData.length == 0){
               // 到1 代理商注册
+              alert('此手机号没有注册，立即注册？')
               self.$router.push({path:'/register'})
               return
             }else{
@@ -155,6 +156,7 @@ export default {
             if(self.indexForUrlUserId == -1){
               // 去A注册
               // alert('从A进来,没有在A注册过')
+              alert('此手机号没有注册，立即注册？')
               self.$router.push({path:'/register'})
               return
             }else{
