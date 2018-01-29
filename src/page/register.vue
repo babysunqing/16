@@ -28,7 +28,7 @@ export default {
   name: 'register',
   data () {
     return {
-      countdown: 0,
+      count: 0,
       identifyingCode:'',
       userInputCode:'',
       canPost: true,
@@ -49,12 +49,12 @@ export default {
   methods:{
     setTime: function () {
       let self = this
-        if (self.countdown === 0) {
+        if (self.count === 0) {
           document.getElementById('yzBtn').innerHTML = '重新获取'
           return
         } else {
-          document.getElementById('yzBtn').innerHTML = '' + this.countdown + 's后重试'
-          this.countdown--
+          document.getElementById('yzBtn').innerHTML = '' + this.count + 's后重试'
+          this.count--
         }
         setTimeout(function () {   
           self.setTime()     
@@ -62,14 +62,14 @@ export default {
     },
     getCode: function () { //获取短信验证码
       if(this.memberRegisterInfo.phone.length == 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/.test(this.memberRegisterInfo.phone)){
-        if(this.countdown > 0){
+        if(this.count > 0){
           return
         }else{
           let self = this
           axios.get('/bestlifeweb/member/getVerificationCode?phone=' + this.memberRegisterInfo.phone).then(function (res) {
             self.identifyingCode = res.data.data
           })
-          this.countdown = 60 
+          this.count = 60 
           this.setTime()
         }
       }else{

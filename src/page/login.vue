@@ -1,6 +1,6 @@
 <template>
 <div class="container" v-title="'登录'">
-  <h1>欢迎您登录</h1>
+  <h1>登录</h1>
   <div class="content">
     <input class="nameInput" 
       type="tel"  
@@ -15,7 +15,7 @@
       placeholder="请输入验证码" 
       v-model="userInputCode" />
 
-    <span id="yzBtn" @click="getCode()">获取验证码</span>
+    <span id="yzBtn" @click="getLoginCode()">获取验证码</span>
 
     <router-link to="/register">  
       <div class="register">立即注册</div>
@@ -44,7 +44,7 @@ export default {
     }
   },
   methods:{
-    setTime: function () {
+    setTimeLogin: function () {
       let self = this
         if (self.countdown === 0) {
           document.getElementById('yzBtn').innerHTML = '重新获取'
@@ -54,10 +54,10 @@ export default {
           this.countdown--
         }
         setTimeout(function () {   
-          self.setTime()     
+          self.setTimeLogin()     
         }, 1000) 
     },
-    getCode: function () { //获取短信验证码
+    getLoginCode: function () { //获取短信验证码
       if(this.phone.length == 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/.test(this.phone)){
         if(this.countdown > 0){
           return
@@ -67,7 +67,7 @@ export default {
             self.identifyingCode = res.data.data
           })
           this.countdown = 60 
-          this.setTime()
+          this.setTimeLogin()
         }
       }else{
         alert('请填写正确的手机号码！')
@@ -121,7 +121,7 @@ export default {
             // 没有注册过
             if(self.resData == null || self.resData.length == 0){
               // 到1 代理商注册
-              self.$router.replace({path:'/register'})
+              self.$router.push({path:'/register'})
               return
             }else{
               // 有注册过，判断有没有默认代理商
@@ -150,11 +150,12 @@ export default {
 
           // 从其他经销商进来，比如A
           if(self.userId != '1'){
+            debugger
             // 没有在A注册过
             if(self.indexForUrlUserId == -1){
               // 去A注册
               // alert('从A进来,没有在A注册过')
-              self.$router.replace({path:'/register'})
+              self.$router.push({path:'/register'})
               return
             }else{
               //  有在A注册过，进入a,进入我的页面之后，自动设A为默认

@@ -221,7 +221,21 @@ export default {
     Relogin:function(item){
       sessionStorage.setItem("userId",item.member.userId)
       sessionStorage.setItem("myInfo",JSON.stringify(item.member))
+      this.getUserInfo()
       window.location.reload()
+    },
+    getUserInfo:function(){
+      let self = this
+      this.userId = sessionStorage.getItem('userId')
+      axios.get('/bestlifeweb/user/getUserInfo?userId=' + self.userId).then(function (res) {
+          self.dataList = res.data.data[0]
+          sessionStorage.setItem("takegoodsRateOnLotterySuccess",self.dataList.takegoodsRateOnLotterySuccess)
+          sessionStorage.setItem("refundRateOnLotterySuccess",self.dataList.refundRateOnLotterySuccess)   
+          sessionStorage.setItem("pointMoneyExchangeRate",self.dataList.pointMoneyExchangeRate)
+          sessionStorage.setItem("lotteryRate",self.dataList.lotteryRate)
+      }).catch(function(err){
+          alert(err)
+      })
     }
   },
   mounted (){
