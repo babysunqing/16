@@ -117,9 +117,11 @@ export default {
 	    }
 	}
 
+	// banner
 	if(sessionStorage.getItem('banner') != null){
 		this.banner = JSON.parse(sessionStorage.getItem('banner'))
 	}
+	
 	//获取商品
     axios.get('/bestlifeweb/goods/goodsList')
     .then(function (res) {
@@ -227,7 +229,6 @@ export default {
                 sessionStorage.setItem("myInfo",JSON.stringify(member))
                 sessionStorage.setItem("memberId",member.memberId)
                 sessionStorage.setItem("userId",member.userId)
-                // self.$router.push({path:'/my'})
                 self.getUserInfo()
               }else{
                 // 有默认 进入到默认
@@ -237,7 +238,6 @@ export default {
                 sessionStorage.setItem("myInfo",JSON.stringify(member))
                 sessionStorage.setItem("memberId",member.memberId)
                 sessionStorage.setItem("userId",member.userId)
-                // self.$router.push({path:'/my'})
                 self.getUserInfo()
                 return
               }
@@ -259,7 +259,6 @@ export default {
               sessionStorage.setItem("myInfo",JSON.stringify(member))
               sessionStorage.setItem("memberId",member.memberId)
               sessionStorage.setItem("userId",member.userId)
-              // self.$router.push({path:'/my'})
               self.getUserInfo()
               return
             }

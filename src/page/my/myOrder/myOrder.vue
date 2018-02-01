@@ -33,7 +33,7 @@
         <!-- 升级成功的订单 -->
           <p v-if="item.lottery != null && item.lottery.lotteryResult == 'success'">
             共{{ item.rootOrder.orderNum * takegoodsRateOnLotterySuccess }}件 
-            订单金额：¥{{ item.rootOrder.payPrice * refundRateOnLotterySuccess / 100}}
+            订单金额：¥{{ item.rootOrder.payPrice/100 * refundRateOnLotterySuccess}}
           </p>
         <!--  普通订单-->
           <p v-else>

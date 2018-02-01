@@ -45,6 +45,7 @@ export default {
       countSecond: 5,
       redpacketNo: '',
       random: '',
+      balance: 0,
       lotteryFromRootOrderVo: {
         lotteryOddEvenChoose: '',
         lotteryResult: '',
@@ -60,7 +61,7 @@ export default {
   created(){
     //获取猜中几率
     let self = this
-    this.userId = JSON.parse(sessionStorage.getItem('myInfo')).userId
+    this.userId = sessionStorage.getItem('userId')
     axios.get('/bestlifeweb/user/getUserInfo?userId=' + self.userId).then(function (res) {
         self.rate = res.data.data[0].redpacketSuccessRate
     })
@@ -76,12 +77,11 @@ export default {
       self.myInfo = res.data.data
       self.userId = JSON.parse(sessionStorage.getItem('myInfo')).userId
       for(var i = 0; i < self.myInfo.length; i++){
-        if(self.myInfo[i].member.userId = self.userId){
+        if(self.myInfo[i].member.userId == self.userId){
           self.balance = self.myInfo[i].member.balance
         }
       }
     })
-
   },
   methods:{
     toMyPage: function(){

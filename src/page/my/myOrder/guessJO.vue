@@ -69,7 +69,7 @@ export default {
       self.myInfo = res.data.data
       self.userId = JSON.parse(sessionStorage.getItem('myInfo')).userId
       for(var i = 0; i < self.myInfo.length; i++){
-        if(self.myInfo[i].member.userId = self.userId){
+        if(self.myInfo[i].member.userId == self.userId){
           self.balance = self.myInfo[i].member.balance
         }
       }

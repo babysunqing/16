@@ -127,7 +127,7 @@
         <div v-for="item in allMember">
           <p v-if="item.member.userId == userId" style="color:#333"> 当前所在经销商：{{item.member.userName }}</p>
           <p v-if="item.member.userId && item.member.userId != 1 && item.member.userId != userId" @click="Relogin(item)">{{item.member.userName }}</p>
-        </div >
+        </div>
       </div>
     </mt-popup>
     
@@ -228,11 +228,11 @@ export default {
       let self = this
       this.userId = sessionStorage.getItem('userId')
       axios.get('/bestlifeweb/user/getUserInfo?userId=' + self.userId).then(function (res) {
-          self.dataList = res.data.data[0]
-          sessionStorage.setItem("takegoodsRateOnLotterySuccess",self.dataList.takegoodsRateOnLotterySuccess)
-          sessionStorage.setItem("refundRateOnLotterySuccess",self.dataList.refundRateOnLotterySuccess)   
-          sessionStorage.setItem("pointMoneyExchangeRate",self.dataList.pointMoneyExchangeRate)
-          sessionStorage.setItem("lotteryRate",self.dataList.lotteryRate)
+          self.dataList = res.data.data
+          sessionStorage.setItem("takegoodsRateOnLotterySuccess",self.dataList[0].takegoodsRateOnLotterySuccess)
+          sessionStorage.setItem("refundRateOnLotterySuccess",self.dataList[0].refundRateOnLotterySuccess)   
+          sessionStorage.setItem("pointMoneyExchangeRate",self.dataList[0].pointMoneyExchangeRate)
+          sessionStorage.setItem("lotteryRate",self.dataList[0].lotteryRate)
       }).catch(function(err){
           alert(err)
       })
