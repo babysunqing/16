@@ -45,7 +45,7 @@ export default {
       countSecond: 5,
       redpacketNo: '',
       random: '',
-      balance: 0,
+      balance:0,
       lotteryFromRootOrderVo: {
         lotteryOddEvenChoose: '',
         lotteryResult: '',

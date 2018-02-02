@@ -226,7 +226,7 @@ export default {
     },
     getUserInfo:function(){
       let self = this
-      this.userId = sessionStorage.getItem('userId')
+      this.userId = JSON.parse(sessionStorage.getItem('myInfo')).userId
       axios.get('/bestlifeweb/user/getUserInfo?userId=' + self.userId).then(function (res) {
           self.dataList = res.data.data
           sessionStorage.setItem("takegoodsRateOnLotterySuccess",self.dataList[0].takegoodsRateOnLotterySuccess)

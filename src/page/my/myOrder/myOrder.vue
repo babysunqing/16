@@ -156,12 +156,9 @@ export default {
     return {
       item:{},
       lotteryFee:'',
-      takegoodsRateOnLotterySuccess:0,
-      refundRateOnLotterySuccess:0,
       order:{},
       goodsDetail:{},
       refund:{},
-      // takeGoods:{},
       rootOrder:{}, // 用户选择的商品
       popupRefund:false, //退款
       popupPoint:false,
@@ -178,6 +175,20 @@ export default {
     this.refundRateOnLotterySuccess = sessionStorage.getItem('refundRateOnLotterySuccess') / 100
     this.pointMoneyExchangeRate = sessionStorage.getItem('pointMoneyExchangeRate')
     this.takegoodsRateOnLotterySuccess = sessionStorage.getItem('takegoodsRateOnLotterySuccess')
+
+    if(this.refundRateOnLotterySuccess == 0 || this.pointMoneyExchangeRate == 0 || this.takegoodsRateOnLotterySuccess == 0){
+      let self = this
+      this.userId = JSON.parse(sessionStorage.getItem('myInfo')).userId
+      axios.get('/bestlifeweb/user/getUserInfo?userId=' + self.userId).then(function (res) {
+          var dataList = res.data.data
+          self.takegoodsRateOnLotterySuccess = dataList[0].takegoodsRateOnLotterySuccess
+          self.refundRateOnLotterySuccess =  dataList[0].refundRateOnLotterySuccess
+          self.pointMoneyExchangeRate =  dataList[0].pointMoneyExchangeRate
+      }).catch(function(err){
+          alert(err)
+      })
+    }
+
     let self = this
     this.memberId = JSON.parse(sessionStorage.getItem('myInfo')).memberId
     axios.get('/bestlifeweb/order/getMemberOrderInfoList?memberId=' + self.memberId)
