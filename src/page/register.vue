@@ -61,7 +61,7 @@ export default {
         }, 1000) 
     },
     getCode: function () { //获取短信验证码
-      if(this.memberRegisterInfo.phone.length == 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/.test(this.memberRegisterInfo.phone)){
+      if(this.memberRegisterInfo.phone.length == 11 && /^((13|14|15|17|18|19)[0-9]{1}\d{8})$/.test(this.memberRegisterInfo.phone)){
         if(this.count > 0){
           return
         }else{

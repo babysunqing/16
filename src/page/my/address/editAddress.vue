@@ -46,7 +46,7 @@ export default {
         alert('请输入详细地址')
         return
       }
-      if(this.address.addressPhone.length == 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/.test(this.address.addressPhone)){        
+      if(this.address.addressPhone.length == 11 && /^((13|14|15|17|18|19)[0-9]{1}\d{8})$/.test(this.address.addressPhone)){        
         axios({
           method: 'post',
           url: '/bestlifeweb/address/editMemberAddressInfo',

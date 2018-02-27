@@ -130,7 +130,7 @@ export default {
         alert('请输入银行卡预预留手机号!')
         return
       }
-      if(this.bankcard.bankcardPhone.length != 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/.test(this.bankcard.bankcardPhone) === false){
+      if(this.bankcard.bankcardPhone.length != 11 && /^((13|14|15|17|18|19)[0-9]{1}\d{8})$/.test(this.bankcard.bankcardPhone) === false){
         alert('请填写正确的手机号码！')
         return
       }

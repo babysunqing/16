@@ -33,7 +33,7 @@
         <!-- 升级成功的订单 -->
           <p v-if="item.lottery != null && item.lottery.lotteryResult == 'success'">
             共{{ item.rootOrder.orderNum * takegoodsRateOnLotterySuccess }}件 
-            订单金额：¥{{ item.rootOrder.payPrice/100 * refundRateOnLotterySuccess}}
+            订单金额：¥{{ item.rootOrder.payPrice/100 * refundRateOnLotterySuccess / 100}}
           </p>
         <!--  普通订单-->
           <p v-else>
@@ -126,7 +126,7 @@
       <mt-popup class="popContent" v-model="popupRefund" popup-transition="popup-fade">
           <div>
             <h1>退货</h1>
-            <p>您可退{{ rootOrder.payPrice * refundRateOnLotterySuccess / 100 }}元，确认退货?</p>
+            <p>您可退{{ rootOrder.payPrice * refundRateOnLotterySuccess / 100 / 100 }}元，确认退货?</p>
             <div class="confirm" @click="submitRefund()">确定</div>
             <div class="cancel" @click="cancel()">取消</div>
           </div>
@@ -172,7 +172,7 @@ export default {
     }
   },
   created () {
-    this.refundRateOnLotterySuccess = sessionStorage.getItem('refundRateOnLotterySuccess') / 100
+    this.refundRateOnLotterySuccess = sessionStorage.getItem('refundRateOnLotterySuccess')
     this.pointMoneyExchangeRate = sessionStorage.getItem('pointMoneyExchangeRate')
     this.takegoodsRateOnLotterySuccess = sessionStorage.getItem('takegoodsRateOnLotterySuccess')
 
@@ -217,7 +217,6 @@ export default {
     },
     takeGoods:function(item){ //弹出提示 是否提货
       if(item.lottery != null && item.lottery.lotteryResult == 'success'){
-        debugger
         item.rootOrder.computeCarriage = item.goods.goodsCarriageStartPrice + ( item.rootOrder.orderNum * this.takegoodsRateOnLotterySuccess - 1 ) * item.goods.goodsCarriageAddPrice
       }else{
         item.rootOrder.computeCarriage = item.rootOrder.carriage
@@ -285,20 +284,24 @@ export default {
       this.$router.replace({name: 'guessJO', params: {rootOrder: JSON.stringify(this.rootOrder)}})
     },
     alertRefund:function(item){
-      this.popupRefund = true
-      this.rootOrder = item.rootOrder
-      this.goodsDetail = item
+      if(this.popupRefund == false){
+        this.popupRefund = true
+        this.rootOrder = item.rootOrder
+        this.goodsDetail = item
+      }
     },
     submitRefund:function(){
-      this.popupRefund = false
-      let self = this
-      this.lotteryId = this.goodsDetail.lottery.lotteryId
-      axios.get('/bestlifeweb/order/memberRefundFromLottery?lotteryId=' + self.lotteryId).then(function (res) {
-        alert('退货申请已提交')
-        window.location.reload()
-      }).catch(function(err){
-        alert(err)        
-      })
+      if(this.popupRefund == true){
+        this.popupRefund = false
+        let self = this
+        this.lotteryId = this.goodsDetail.lottery.lotteryId
+        axios.get('/bestlifeweb/order/memberRefundFromLottery?lotteryId=' + self.lotteryId).then(function (res) {
+          alert('退货申请已提交')
+          window.location.reload()
+        }).catch(function(err){
+          alert(err)        
+        })
+      }
     }
   }  
 }

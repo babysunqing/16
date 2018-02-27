@@ -113,7 +113,7 @@ export default {
               // 到1 代理商注册
               self.$router.push({path:'/register'})
               return
-            }else{  
+            }else{
               // 有注册过，判断有没有默认代理商
               // 没有默认的代理商
               if(self.indexForMemberChooseDefaultUserId == -1){

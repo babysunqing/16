@@ -23,6 +23,7 @@ export default {
   name: 'withdraw',
   data () {
     return {
+      canWithdraw: true,
       cardNum:'',
       bankCard:{},
       myInfo:{},
@@ -44,7 +45,8 @@ export default {
       this.memberId = JSON.parse(sessionStorage.getItem('myInfo')).memberId
       axios.get('/bestlifeweb/bankcard/getMemberBankcardInfoList?memberId=' + self.memberId)
       .then(function (res) {
-        self.bankCard = res.data.data[1]
+        self.bankCard = res.data.data[0]
+        alert(res.data.data[2])
         self.cardNum = self.bankCard.bankcardId
         self.cardNum = self.cardNum.substring(self.cardNum.length-4,self.cardNum.length)
       })
@@ -64,19 +66,24 @@ export default {
       this.memberPayoffInfo.memberPayoffBankcardId = this.bankCard.bankcardId
       if(this.memberPayoffInfo.memberPayoffBankcardId != '')
         this.memberPayoffInfo.memberPayoffType = 'bank'
-      else this.memberPayoffInfo.memberPayoffType = 'wx'
-      let self = this
-      axios({
-        method: 'post',
-        url: '/bestlifeweb/memberPayoff/memberPayoffRequest',
-        headers: {'Content-Type': 'application/json'},
-        data: self.memberPayoffInfo
-      }).then(function (res) {
-        self.$router.replace({name: 'withdrawSubmit', params: {memberPayoffInfo:JSON.stringify(self.memberPayoffInfo)}})
-      }).catch(function(err){
-          alert(err)
-          self.$messagebox("提现失败,请检查网络是否异常!")
-      })
+      else {
+        this.memberPayoffInfo.memberPayoffType = 'wx'
+      }
+      if(this.canWithdraw == true){
+        let self = this
+        axios({
+          method: 'post',
+          url: '/bestlifeweb/memberPayoff/memberPayoffRequest',
+          headers: {'Content-Type': 'application/json'},
+          data: self.memberPayoffInfo
+        }).then(function (res) {
+          self.canWithdraw = false
+          self.$router.replace({name: 'withdrawSubmit', params: {memberPayoffInfo:JSON.stringify(self.memberPayoffInfo)}})
+        }).catch(function(err){
+            alert(err)
+            self.$messagebox("提现失败,请检查网络是否异常!")
+        })
+      }
     }
   }
 }

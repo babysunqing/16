@@ -40,6 +40,14 @@ export default {
       memberLoginInfo:{
         openid: '',
         type: 'wx'
+      },
+      memberRegisterInfo:{
+        phone: '',
+        firstClassSellerMemberId: '',
+        userInfo:{},
+        openid:'',
+        userId: '',
+        type:'wx'
       }
     }
   },
@@ -58,7 +66,7 @@ export default {
         }, 1000) 
     },
     getCode: function () { //获取短信验证码
-      if(this.phone.length == 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/.test(this.phone)){
+      if(this.phone.length == 11 && /^((13|14|15|17|18|19)[0-9]{1}\d{8})$/.test(this.phone)){
         if(this.countdown > 0){
           return
         }else{
@@ -72,6 +80,32 @@ export default {
       }else{
         alert('请填写正确的手机号码！')
       }        
+    },
+    memberRegister: function(){
+      let self = this
+      this.memberRegisterInfo.firstClassSellerMemberId = JSON.parse(sessionStorage.getItem('urlMemberInfo')).firstClassSellerMemberId
+      this.memberRegisterInfo.openid = sessionStorage.getItem('openid')
+      this.memberRegisterInfo.userId = sessionStorage.getItem('userId')
+      this.memberRegisterInfo.userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
+      this.memberRegisterInfo.phone = this.memberLoginInfo.phone
+      axios({
+        method: 'post',
+        url: '/bestlifeweb/member/memberRegister',
+        headers: {'Content-Type': 'application/json'},
+        data: self.memberRegisterInfo
+      }).then(function (res) {
+        if(res.data.code == 0){
+          localStorage.setItem('phone', self.memberRegisterInfo.phone)
+          sessionStorage.setItem("myInfo",JSON.stringify(res.data.data))
+          sessionStorage.setItem("memberId",res.data.data.memberId)
+          self.$router.replace({path:'/my'})
+        }else if(res.data.code == 1){
+          alert('errmsg' + res.data.errmsg)
+        }
+      }).catch(function(error){
+          alert('error.data' + JSON.stringify(error.response.data))
+          alert('error.status' + error.response.status)
+      })
     },
     submit: function () {
       let self = this
@@ -121,8 +155,7 @@ export default {
             // 没有注册过
             if(self.resData == null || self.resData.length == 0){
               // 到1 代理商注册
-              alert('此手机号没有注册，立即注册？')
-              self.$router.push({path:'/register'})
+              self.memberRegister()
               return
             }else{
               // 有注册过，判断有没有默认代理商
@@ -151,13 +184,11 @@ export default {
 
           // 从其他经销商进来，比如A
           if(self.userId != '1'){
-            debugger
             // 没有在A注册过
             if(self.indexForUrlUserId == -1){
               // 去A注册
               // alert('从A进来,没有在A注册过')
-              alert('此手机号没有注册，立即注册？')
-              self.$router.push({path:'/register'})
+              self.memberRegister()
               return
             }else{
               //  有在A注册过，进入a,进入我的页面之后，自动设A为默认
