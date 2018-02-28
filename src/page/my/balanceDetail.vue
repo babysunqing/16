@@ -1,5 +1,6 @@
 <template>
 <div class="container" v-title="'余额明细'">
+  <!-- <div class="el-icon-loading loadingIcon" v-if="loadingIcon"></div> -->
   <div class="itemContent noData" v-if="list.length <= 0">暂无数据</div>
   <div class="itemContent" v-for="item in list">
     <h1>{{item.memberCashFlowDesc }}</h1>
@@ -16,6 +17,7 @@ export default {
   name: 'pointDetail',
   data () {
     return {
+      loadingIcon:true,
       list:[]
     }
   },
@@ -24,6 +26,7 @@ export default {
     this.memberId = JSON.parse(sessionStorage.getItem('myInfo')).memberId
     axios.get('/bestlifeweb/memberCashFlow/getMemberCashFlowList?memberId=' + self.memberId)
     .then(function (res) {
+      // self.loadingIcon = false
       self.list = res.data.data
       if(self.list.length > 0){
         for(let i = 0; i < self.list.length; i++){
@@ -46,6 +49,12 @@ export default {
   overflow: auto;
   background-color: #f3f3f3;
   -webkit-overflow-scrolling : touch;
+}
+.loadingIcon{
+  color: #999;
+  text-align: center;
+  margin-top: 40vh;
+  margin-left:43vw
 }
 .noData{
   font-size: .32rem;

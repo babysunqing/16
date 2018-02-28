@@ -1,9 +1,10 @@
 <template>
 <div class="container" v-title="'积分商城'">
   <div class="main">
-  <div class="empty" v-if="isShow">
-    暂无积分商品
-  </div>
+    <div class="el-icon-loading loadingIcon" v-if="loadingIcon"></div>
+    <div class="empty" v-if="isShow">
+      暂无积分商品
+    </div>
     <div class="goodsContent" v-if="pointGoodsList.length > 0">
       <div class="goods" v-for="item in pointGoodsList">
         <router-link class="deleteline" :to="{name: 'exchangeDetail', params: {id:item.goodsId}}">
@@ -33,6 +34,7 @@ export default {
   },
   data () {
     return {
+      loadingIcon:true,
       pointGoodsList:[],
       isShow:false
     }
@@ -42,6 +44,7 @@ export default {
     let self = this
     axios.get('/bestlifeweb/goods/pointGoodsList')
     .then(function (res) {
+      self.loadingIcon = false
       self.pointGoodsList = res.data.data
       if(self.pointGoodsList.length <= 0){
           self.isShow = true
@@ -70,6 +73,12 @@ export default {
   bottom:.85rem;
   overflow-y: scroll;
   padding-top: .2rem;
+}
+.loadingIcon{
+  color: #999;
+  text-align: center;
+  margin-top: 40vh;
+  margin-left:43vw;
 }
 .confirmButton{
   font-size: .4rem;

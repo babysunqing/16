@@ -31,6 +31,11 @@ export default {
   },
   methods:{
     submit: function () {
+      var myInfo = JSON.parse(sessionStorage.getItem('myInfo'))
+      if(myInfo.trueName != '' & myInfo.identificationNumber != ''){
+        alert('您已经申请成为促销员，请勿重复提交！')
+        return
+      }
       let self = this
       if(this.sellerApplication.trueName === ''){
         alert('请填写真实姓名')
@@ -40,8 +45,8 @@ export default {
         alert('请填写正确的身份证号码')
         return
       }
-      this.sellerApplication.memberId = JSON.parse(sessionStorage.getItem('myInfo')).memberId
-      this.sellerApplication.userId = JSON.parse(sessionStorage.getItem('myInfo')).userId
+      this.sellerApplication.memberId = myInfo.memberId
+      this.sellerApplication.userId = myInfo.userId
       axios({
         method: 'post',
         url: '/bestlifeweb/seller/applyForSeller',

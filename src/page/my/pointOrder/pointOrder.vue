@@ -1,5 +1,6 @@
 <template>
 <div class="container" v-title="'积分订单'">
+  <div class="el-icon-loading loadingIcon" v-if="loadingIcon"></div>
   <div class="empty" v-if="isShow">
     暂无订单
   </div>
@@ -76,6 +77,7 @@ export default {
   name: 'pointOrder',
   data () {
     return {
+      loadingIcon:true,
       item:{
         pointOrder:{}
       },
@@ -95,6 +97,7 @@ export default {
     this.memberId = JSON.parse(sessionStorage.getItem('myInfo')).memberId
     axios.get('/bestlifeweb/order/getMemberPointOrderInfoList?memberId=' + self.memberId)
     .then(function (res) {
+        self.loadingIcon = false
         self.pointOrderList = res.data.data
         if(self.pointOrderList.length <= 0){
           self.isShow = true
@@ -148,6 +151,12 @@ export default {
   overflow: auto;
   background-color: #f3f3f3;
   -webkit-overflow-scrolling : touch;
+}
+.loadingIcon{
+  color: #999;
+  text-align: center;
+  margin-top: 40vh;
+  margin-left:43vw
 }
 .deleteline{
   text-decoration: none;

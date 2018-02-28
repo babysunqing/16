@@ -111,7 +111,7 @@ export default {
             // 没有注册过
             if(self.resData == null || self.resData.length == 0){
               // 到1 代理商注册
-              self.$router.push({path:'/register'})
+              self.$router.push({path:'/login'})
               return
             }else{
               // 有注册过，判断有没有默认代理商
@@ -146,7 +146,7 @@ export default {
             if(self.indexForUrlUserId == -1){
               // 去A注册
               // alert('从A进来,没有在A注册过')
-              self.$router.push({path:'/register'})
+              self.$router.push({path:'/login'})
               return
             }else{
               //  有在A注册过，进入a,进入我的页面之后，自动设A为默认

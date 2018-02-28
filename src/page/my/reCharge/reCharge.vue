@@ -47,7 +47,7 @@ export default {
     if(sessionStorage.getItem('myInfo') != null){
       this.myInfo = JSON.parse(sessionStorage.getItem('myInfo'))
     }
-    // this.url = window.location.href
+
     this.url = 'http://16.21d.me/bestlifeweb/html/index.html'
     this.url = encodeURI(encodeURI(Base64.encode(this.url)))
     axios.get('/bestlifeweb/member/jssdkConfigHelper?url=' + self.url).then(function (res) {
@@ -67,7 +67,6 @@ export default {
   },
   methods:{
     userInput: function (num) {
-      // debugger
       this.createWXPaymentVo.payNum = num
     },
     submit: function () {

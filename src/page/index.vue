@@ -49,6 +49,7 @@
 				<h1>全部商品</h1>
 				<h2>ALL GOODS</h2>
 			</div>
+			<div class="el-icon-loading loadingIcon" v-if="loadingIcon"></div>
 			<div class="goodsContent" >
 				<div class="goods"  v-for="item in goodsList">
 					<router-link class="deleteline" :to="{name: 'goodsDetail', params: {id:item.goodsId}}">
@@ -80,6 +81,7 @@ export default {
   },
   data () {
     return {
+      loadingIcon:true,
       memberLoginInfo:{
         openid:'',
         type: 'wx'
@@ -125,6 +127,7 @@ export default {
 	//获取商品
     axios.get('/bestlifeweb/goods/goodsList')
     .then(function (res) {
+    	self.loadingIcon = false
         self.goodsList = res.data.data
     })
     .catch(function(err){
@@ -172,11 +175,11 @@ export default {
     },
 	isLogin: function () {
       // 本地没有缓存过phone，跳转去登陆或注册
+      debugger
       if(localStorage.getItem('phone') == null){
         this.$router.replace({name: 'login'})
       }else{
         // 有缓存手机号，说明已经注册或登录过，这时候就去请求登录接口，看有没有返回相同的userId，
-        // 有，就让他进入这个userId，没有就去在此userId下注册
         let self = this
         this.memberLoginInfo.phone = localStorage.getItem('phone')
         this.memberLoginInfo.openid = sessionStorage.getItem('openid')
@@ -216,7 +219,7 @@ export default {
             // 没有注册过
             if(self.resData == null || self.resData.length == 0){
               // 到1 代理商注册
-              self.$router.replace({path:'/register'})
+              self.$router.replace({path:'/login'})
               return
             }else{
               // 有注册过，判断有没有默认代理商
@@ -250,7 +253,7 @@ export default {
             if(self.indexForUrlUserId == -1){
               // 去A注册
               // alert('从A进来,没有在A注册过')
-              self.$router.replace({path:'/register'})
+              self.$router.replace({path:'/login'})
               return
             }else{
               //  有在A注册过，进入a,进入我的页面之后，自动设A为默认
@@ -286,6 +289,12 @@ export default {
 	top:0px;
 	bottom:.85rem;
 	overflow-y: scroll;
+}
+.loadingIcon{
+  color: #999;
+  text-align: center;
+  margin-left:44vw;
+  font-size: .8rem;
 }
 .banner{
 	width: 100%;

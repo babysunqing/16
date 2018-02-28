@@ -45,7 +45,6 @@ export default {
       countSecond: 5,
       redpacketNo: '',
       random: '',
-      balance:0,
       lotteryFromRootOrderVo: {
         lotteryOddEvenChoose: '',
         lotteryResult: '',
@@ -138,7 +137,7 @@ export default {
       }
     },
     submitRoot: function(){
-      // debugger
+      debugger
       var rootOrder = JSON.parse(this.$route.params.rootOrder)
       var lotteryRate = sessionStorage.getItem('lotteryRate')/100
       if(this.balance < rootOrder.payPrice * rootOrder.orderNum * lotteryRate ){

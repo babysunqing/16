@@ -1,77 +1,95 @@
 <template>
 <div class="container" v-title="'我的订单'">
+  <div class="el-icon-loading loadingIcon" v-if="loadingIcon"></div>
+
   <div class="empty" v-if="isShow">
     暂无订单
   </div>
- 
-  <div class="orderContent" v-for="item in orderList" v-else>
+  <div class="mui-table-view" 
+      v-infinite-scroll="loadMore" 
+      infinite-scroll-disabled="queryLoading" 
+      infinite-scroll-distance="10" 
+      infinite-scroll-immediate-check="false">
+      
+      <div class="orderContent" v-for="item in orderList">
 
-    <!-- 头部-->
-    <div class="top">
-      <div class="time">{{ item.rootOrder.day}}&nbsp;&nbsp;{{ item.rootOrder.time }}</div>
-      <div class="staus" v-if="item.rootOrder.orderStatus == 'init'">正常</div>
-      <div class="staus" v-if="item.rootOrder.orderStatus == 'takegoods' || item.takeGoods != null">已提货</div>
-      <div class="staus" v-if="item.convertToPoint == null && item.refund == null && item.takeGoods == null && item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'init'">升级中</div>
-      <div class="staus" v-if="item.convertToPoint == null && item.refund == null && item.takeGoods == null && item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'success'">升级成功</div>
-      <div class="staus" v-if="item.convertToPoint == null && item.refund == null && item.takeGoods == null && item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'fail'">升级失败</div>
-      <div class="staus" v-if="item.refund != null &&  item.refund.refundStatus == 'init'">退货中</div>
-      <div class="staus" v-if="item.refund != null &&  item.refund.refundStatus == 'reject'">退货失败</div>
-      <div class="staus" v-if="item.refund != null &&  item.refund.refundStatus == 'pass'">退货成功</div>
-      <div class="staus" v-if="item.convertToPoint != null">已兑换积分</div>
-    </div>
+        <!-- 头部-->
+        <div class="top">
+          <div class="time">{{ item.rootOrder.day}}&nbsp;&nbsp;{{ item.rootOrder.time }}</div>
+          <div class="staus" v-if="item.rootOrder.orderStatus == 'init'">正常</div>
+          <div class="staus" v-if="item.rootOrder.orderStatus == 'takegoods' || item.takeGoods != null">已提货</div>
+          <div class="staus" v-if="item.convertToPoint == null && item.refund == null && item.takeGoods == null && item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'init'">升级中</div>
+          <div class="staus" v-if="item.convertToPoint == null && item.refund == null && item.takeGoods == null && item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'success'">升级成功</div>
+          <div class="staus" v-if="item.convertToPoint == null && item.refund == null && item.takeGoods == null && item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'fail'">升级失败</div>
+          <div class="staus" v-if="item.refund != null &&  item.refund.refundStatus == 'init'">退货中</div>
+          <div class="staus" v-if="item.refund != null &&  item.refund.refundStatus == 'reject'">退货失败</div>
+          <div class="staus" v-if="item.refund != null &&  item.refund.refundStatus == 'pass'">退货成功</div>
+          <div class="staus" v-if="item.convertToPoint != null">已兑换积分</div>
+        </div>
 
-    <!--商品信息 -->
-      <div class="middle goods" @click="linkToGoodsDetail(item)">
-        <img :src="item.goods.goodsShowingImg.sourceUrl">
-        <h1>{{ item.rootOrder.orderDesc }}</h1>
-        <h2>¥{{ item.rootOrder.payPrice / item.rootOrder.orderNum / 100 }}</h2>
-        
-        <span v-if="item.lottery != null && item.lottery.lotteryResult == 'success'">×{{ item.rootOrder.orderNum * takegoodsRateOnLotterySuccess}}</span>
-        <span v-else>×{{ item.rootOrder.orderNum}}</span>
+        <!--商品信息 -->
+          <div class="middle goods" @click="linkToGoodsDetail(item)">
+            <img :src="item.goods.goodsShowingImg.sourceUrl">
+            <h1>{{ item.rootOrder.orderDesc }}</h1>
+            <h2>¥{{ item.rootOrder.payPrice / item.rootOrder.orderNum / 100 }}</h2>
+            
+            <span v-if="item.lottery != null && item.lottery.lotteryResult == 'success'">×{{ item.rootOrder.orderNum * takegoodsRateOnLotterySuccess}}</span>
+            <span v-else>×{{ item.rootOrder.orderNum}}</span>
 
-        <div class="total">
-        <!-- 升级成功的订单 -->
-          <p v-if="item.lottery != null && item.lottery.lotteryResult == 'success'">
-            共{{ item.rootOrder.orderNum * takegoodsRateOnLotterySuccess }}件 
-            订单金额：¥{{ item.rootOrder.payPrice/100 * refundRateOnLotterySuccess / 100}}
-          </p>
-        <!--  普通订单-->
-          <p v-else>
-            共{{ item.rootOrder.orderNum }}件 
-            订单金额：¥{{ item.rootOrder.payPrice / 100}}
-          </p>
+            <div class="total">
+            <!-- 升级成功的订单 -->
+              <p v-if="item.lottery != null && item.lottery.lotteryResult == 'success'">
+                共{{ item.rootOrder.orderNum * takegoodsRateOnLotterySuccess }}件 
+                订单金额：¥{{ item.rootOrder.payPrice/100 * refundRateOnLotterySuccess / 100}}
+              </p>
+            <!--  普通订单-->
+              <p v-else>
+                共{{ item.rootOrder.orderNum }}件 
+                订单金额：¥{{ item.rootOrder.payPrice / 100}}
+              </p>
+            </div>
+          </div>
+        <!-- 底部 -->
+        <div class="bottom">
+          <!-- 兑换积分 -->
+          <div class="sale" @click="alertPointPop(item)" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'success' && item.refund == null && item.takeGoods == null && item.convertToPoint == null">兑换积分</div>
+          <div class="sale" @click="alertPointPop(item)" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'fail' && item.refund == null && item.takeGoods == null && item.convertToPoint == null">兑换积分</div>
+          <!-- 促销  -->
+          <div class="sale" @click="alertSalePop(item)" v-if="item.rootOrder.orderStatus == 'init'">促销</div>
+          <!-- 提货 -->
+          <div class="takeGoods" @click="takeGoods(item)" v-if="item.rootOrder.orderStatus == 'init'">提货</div>
+          <div class="takeGoods" @click="takeGoods(item)" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'success' && item.refund == null && item.takeGoods == null && item.convertToPoint == null">提货</div>
+          <div class="takeGoods" @click="takeGoods(item)" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'fail' && item.refund == null && item.takeGoods == null && item.convertToPoint == null">提货</div>
+
+          <!-- 退款 -->
+          <div class="takeGoods" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'success' && item.refund == null && item.takeGoods == null && item.convertToPoint == null " @click="alertRefund(item)">退货</div>
+
+          <!-- 物流信息 -->
+          <div class="takeGoods" v-if="item.rootOrder.orderStatus == 'takegoods'" @click="alertLogistics(item)">物流信息</div>
+          <div class="takeGoods" v-if="item.rootOrder.orderStatus == 'lottery' && item.takeGoods != null" @click="alertLogistics(item)">物流信息</div>
+
+          <!-- 再来一单 -->
+          <router-link to="/index">
+            <div class="sale" v-if="item.rootOrder.orderStatus == 'takegoods'">再来一单</div>
+            <div class="sale" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'init'">再来一单</div>
+            <div class="sale" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'success' && item.refund != null">再来一单</div>
+            <div class="sale" v-if="item.rootOrder.orderStatus == 'lottery' && item.takeGoods != null">再来一单</div>
+            <div class="sale" v-if="item.rootOrder.orderStatus == 'lottery' && item.convertToPoint != null">再来一单</div>
+          </router-link>
+
         </div>
       </div>
-    <!-- 底部 -->
-    <div class="bottom">
-      <!-- 兑换积分 -->
-      <div class="sale" @click="alertPointPop(item)" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'success' && item.refund == null && item.takeGoods == null && item.convertToPoint == null">兑换积分</div>
-      <div class="sale" @click="alertPointPop(item)" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'fail' && item.refund == null && item.takeGoods == null && item.convertToPoint == null">兑换积分</div>
-      <!-- 促销  -->
-      <div class="sale" @click="alertSalePop(item)" v-if="item.rootOrder.orderStatus == 'init'">促销</div>
-      <!-- 提货 -->
-      <div class="takeGoods" @click="takeGoods(item)" v-if="item.rootOrder.orderStatus == 'init'">提货</div>
-      <div class="takeGoods" @click="takeGoods(item)" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'success' && item.refund == null && item.takeGoods == null && item.convertToPoint == null">提货</div>
-      <div class="takeGoods" @click="takeGoods(item)" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'fail' && item.refund == null && item.takeGoods == null && item.convertToPoint == null">提货</div>
+      
+    
+      <div class="bottomIcon" v-show="allLoaded">
+        <span>已全部加载</span>
+      </div>
 
-      <!-- 退款 -->
-      <div class="takeGoods" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'success' && item.refund == null && item.takeGoods == null && item.convertToPoint == null " @click="alertRefund(item)">退货</div>
-
-      <!-- 物流信息 -->
-      <div class="takeGoods" v-if="item.rootOrder.orderStatus == 'takegoods'" @click="alertLogistics(item)">物流信息</div>
-      <div class="takeGoods" v-if="item.rootOrder.orderStatus == 'lottery' && item.takeGoods != null" @click="alertLogistics(item)">物流信息</div>
-
-      <!-- 再来一单 -->
-      <router-link to="/index">
-        <div class="sale" v-if="item.rootOrder.orderStatus == 'takegoods'">再来一单</div>
-        <div class="sale" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'init'">再来一单</div>
-        <div class="sale" v-if="item.rootOrder.orderStatus == 'lottery' && item.lottery.lotteryResult == 'success' && item.refund != null">再来一单</div>
-        <div class="sale" v-if="item.rootOrder.orderStatus == 'lottery' && item.takeGoods != null">再来一单</div>
-        <div class="sale" v-if="item.rootOrder.orderStatus == 'lottery' && item.convertToPoint != null">再来一单</div>
-      </router-link>
-
-    </div>
+      <div class="bottomIcon" v-show="queryLoading">
+        <span>加载中....</span>
+      </div>
   </div>
+  
 
   <!-- 弹出层集合 -->
   <div>
@@ -154,21 +172,30 @@ export default {
   name: 'pointOrder',
   data () {
     return {
+      loadingIcon:true,
       item:{},
       lotteryFee:'',
       order:{},
       goodsDetail:{},
       refund:{},
       rootOrder:{}, // 用户选择的商品
+      isShow: false,
+      status: 'takegoods',
+      orderList:[],
+      //初始化无限加载相关参数
+      queryLoading: false, //加载中标志
+      allLoaded: false, //判断是否到达最大页数
+      totalNum: 0, // 总数目
+      totalPages: 0, // 总页数
+      pageSize: 0, //每页显示数
+      pageNum: 1, //当前页数
+      // 初始化弹出层的默认值
       popupRefund:false, //退款
       popupPoint:false,
       popupSale:false,
       popupTakeGoods: false,
       popupLogistics:false,
       popupUpdate: false,
-      isShow: false,
-      status: 'takegoods',
-      orderList:[]
     }
   },
   created () {
@@ -191,26 +218,84 @@ export default {
 
     let self = this
     this.memberId = JSON.parse(sessionStorage.getItem('myInfo')).memberId
-    axios.get('/bestlifeweb/order/getMemberOrderInfoList?memberId=' + self.memberId)
+    axios.get('/bestlifeweb/order/getMemberOrderInfoList?memberId=' + self.memberId + '&pageNum=' + this.pageNum)
     .then(function (res) {
-        self.orderList = res.data.data
+        self.loadingIcon = false
+        //记录返回的数据
+        self.setPage(res.data.data)
+        //第一页数据的数据加载
+        self.orderList = res.data.data.list
+        // 把时间戳转换、图片数组构建
+        self.setTime(self.orderList)
+        // 如果返回值为空数组 显示暂无订单
         if(self.orderList.length <= 0){
           self.isShow = true
-        }
-        if(self.orderList.length > 0){
-          for(let i = 0; i < self.orderList.length; i++){
-            self.orderList[i].goods.goodsShowingImg = eval('(' + self.orderList[i].goods.goodsShowingImg + ')')
-            let day = self.orderList[i].rootOrder.createTime
-            self.orderList[i].rootOrder.day = new Date(parseInt(day) * 1000).toLocaleDateString()
-            self.orderList[i].rootOrder.time = new Date(parseInt(day) * 1000).toLocaleTimeString('chinese',{hour12:false})
-          }
         }
     })
     .catch(function(err){
       alert(err.message)
     })
   },
+  computed: {
+   params() {
+    return{
+     pageSize: this.pageSize //每页显示数
+     }
+   }
+  },
   methods:{
+    // 构建build参数
+   setPage(data) {
+     // this.pageNum  = data.pageNum
+     this.pageSize = data.size
+     this.totalNum = data.total
+     this.totalPages = data.pages
+   },
+   // 把时间戳转换、图片数组构建
+   setTime(orderList) {
+     if(orderList.length > 0){
+        for(var i = 0; i < orderList.length; i++){
+          orderList[i].goods.goodsShowingImg = eval('(' + orderList[i].goods.goodsShowingImg + ')')
+          var day = orderList[i].rootOrder.createTime
+          orderList[i].rootOrder.day = new Date(parseInt(day) * 1000).toLocaleDateString()
+          orderList[i].rootOrder.time = new Date(parseInt(day) * 1000).toLocaleTimeString('chinese',{hour12:false})
+        }
+     }
+   },
+    // 判断是否到达最大页数
+    // 返回true 说明已经最大页数
+    // 返回false 说明还未到达
+    isAllLoaded() {
+      // 如果当前页数到达最大页数
+      if(this.pageNum >= this.totalPages){
+        this.allLoaded = true
+        this.pageNum = this.totalPages
+        return false
+      }
+      else{
+        return true
+      }
+    },
+    //下拉底部加载下一页数据
+    loadMore() {
+      // 显示查询加载图标
+      if(this.isAllLoaded() ){
+        this.queryLoading = true
+        this.pageNum ++
+        let self = this
+        this.memberId = JSON.parse(sessionStorage.getItem('myInfo')).memberId
+        axios.get('/bestlifeweb/order/getMemberOrderInfoList?memberId=' + self.memberId + '&pageNum=' + this.pageNum)
+        .then((res) => {
+          self.queryLoading = false
+          // res.data.data.list 设置日期
+          self.setPage(res.data.data)
+          self.setTime(res.data.data.list)
+          self.orderList = self.orderList.concat(res.data.data.list)       
+        }).catch(function(err){
+          alert(err)
+        })
+      }
+    },
     alertPointPop:function(item){ //弹出提示 是否兑换积分
       this.popupPoint = true
       this.item = item
@@ -234,8 +319,14 @@ export default {
     },
     alertLogistics:function(item){ //弹出提示 物流信息
       this.popupLogistics = true
-      // debugger
       this.takeGoods = item.takeGoods
+    },
+    alertRefund:function(item){
+      if(this.popupRefund == false){
+        this.popupRefund = true
+        this.rootOrder = item.rootOrder
+        this.goodsDetail = item
+      }
     },
     submitPoint: function(){ //确认兑换积分
       this.popupPoint = false
@@ -283,13 +374,6 @@ export default {
     guessJO:function(){
       this.$router.replace({name: 'guessJO', params: {rootOrder: JSON.stringify(this.rootOrder)}})
     },
-    alertRefund:function(item){
-      if(this.popupRefund == false){
-        this.popupRefund = true
-        this.rootOrder = item.rootOrder
-        this.goodsDetail = item
-      }
-    },
     submitRefund:function(){
       if(this.popupRefund == true){
         this.popupRefund = false
@@ -314,6 +398,12 @@ export default {
   overflow: auto;
   background-color: #f3f3f3;
   -webkit-overflow-scrolling : touch;
+}
+.loadingIcon{
+  color: #999;
+  text-align: center;
+  margin-top: 40vh;
+  margin-left:43vw
 }
 .deleteline{
   text-decoration: none;
@@ -491,5 +581,15 @@ export default {
   text-align: center;
   margin-left: 0
 }
-
+.bottomIcon{
+  height: 1.12rem;
+  margin-left: .24rem;
+  margin-right: .24rem;
+  text-align: center;
+  font-size: .24rem;
+  line-height: 1.12rem;
+}
+.bottomIcon span{
+  color: #999;
+}
 </style>

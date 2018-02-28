@@ -148,6 +148,9 @@ export default {
           alert('添加成功！')
           window.history.go(-1)
         })
+        .catch(function(err){
+          alert(err.message)
+        })
       }
     }
   }  

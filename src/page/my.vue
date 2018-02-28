@@ -99,27 +99,29 @@
       </router-link>
 
     
-      <div class="item" @click="showPop()">
+      <div class="item" @click="showPop()" style="margin-top:.24rem">
         <div class="title">更改默认经销商</div>
         <img src="../assets/next_icon.png">
       </div>
 
-      <mt-popup class="popContent" v-model="popupChange" popup-transition="popup-fade">
+      <div class="item" @click="showSwitch()">
+        <div class="title">切换账号</div>
+        <img src="../assets/next_icon.png">
+      </div>
+    </div>
+    <div class="exit" @click="logOff()">退出登录</div>
+
+
+    <mt-popup class="popContent" v-model="popupChange" popup-transition="popup-fade">
         <div>
           <h1>点击设置默认经销商</h1>
           <div v-for="item in allMember">
             <p v-if="item.member.wxDefaultUser == 1" @click="change(item)" style="color:#333"> 默认经销商：{{item.member.userName }}</p>
             <p v-if="item.member.wxDefaultUser == 0 && item.member.userId != 1" @click="change(item)"> {{item.member.userName }}</p>
           </div >
-          <!-- <div class="confirm" @click="submitPoint()">确定</div>
-          <div class="cancel" @click="cancel()">取消</div> -->
         </div>
       </mt-popup>
 
-
-    </div>
-    <!-- <div class="exit" @click="logOff()">退出登录</div> -->
-    <div class="exit" @click="showSwitch()">切换账号</div>
 
     <mt-popup class="popContent" v-model="popupSwitch" popup-transition="popup-fade">
       <div>
@@ -194,8 +196,9 @@ export default {
   },
   methods:{
     logOff:function(){
-      localStorage.setItem("isLogin",false)
-      this.$router.push({path:'/index'})
+      localStorage.clear()
+      sessionStorage.removeItem('myInfo')
+      this.$router.push({path:'/login'})
     },
     alertTips:function ( ) {
       alert('请联系促销员！')

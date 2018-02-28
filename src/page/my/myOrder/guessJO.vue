@@ -43,7 +43,6 @@ export default {
       showData:false,       
       hiddenBotton:true,
       resData:{},
-      balance:0,
       lotteryFromRootOrderVo:{
         lotteryOddEvenChoose: '',
         lotteryResult: 'init',

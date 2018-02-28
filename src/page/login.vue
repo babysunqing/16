@@ -17,9 +17,9 @@
 
     <span id="loginBtn" @click="getCode()">获取验证码</span>
 
-    <router-link to="/register">  
+<!--     <router-link to="/register">  
       <div class="register">立即注册</div>
-    </router-link>
+    </router-link> -->
 
     <div class="submit" @click="submit()">提交</div>
     <router-view></router-view>
@@ -133,7 +133,6 @@ export default {
           self.indexForDefaultUser = -1
           
           if(self.resData != null && self.resData.length > 0){
-            // 初始化
             for(var i = 0; i < self.resData.length; i++){
               // url上对应的userId下标，有在此代理商注册过
               if(self.resData[i].member.userId == self.userId){
@@ -164,6 +163,7 @@ export default {
                 // alert('从1进来,没有有默认经销商')
                 var index = self.indexForDefaultUser
                 var member = self.resData[index].member
+                localStorage.setItem('phone', self.memberLoginInfo.phone)
                 sessionStorage.setItem("myInfo",JSON.stringify(member))
                 sessionStorage.setItem("memberId",member.memberId)
                 sessionStorage.setItem("userId",member.userId)
@@ -173,6 +173,7 @@ export default {
                 // alert('从1，进来有默认经销商')
                 var index = self.indexForMemberChooseDefaultUserId
                 var member = self.resData[index].member
+                localStorage.setItem('phone', self.memberLoginInfo.phone)
                 sessionStorage.setItem("myInfo",JSON.stringify(member))
                 sessionStorage.setItem("memberId",member.memberId)
                 sessionStorage.setItem("userId",member.userId)
@@ -194,6 +195,7 @@ export default {
               //  有在A注册过，进入a,进入我的页面之后，自动设A为默认
               // alert('从A进来,有在A注册过')
               var member = self.resData[self.indexForUrlUserId].member
+              localStorage.setItem('phone', self.memberLoginInfo.phone)
               sessionStorage.setItem("myInfo",JSON.stringify(member))
               sessionStorage.setItem("memberId",member.memberId)
               sessionStorage.setItem("userId",member.userId)
@@ -201,7 +203,6 @@ export default {
               return
             }
           }
-
         }).catch(function(error){
           alert(JSON.stringify(error.response.data))
         })
