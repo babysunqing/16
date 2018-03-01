@@ -33,6 +33,7 @@ export default {
   name: 'login',
   data () {
     return {
+      canPost:true,
       phone:'',
       countdown: 0,
       identifyingCode:'',
@@ -65,7 +66,8 @@ export default {
           self.setTime()     
         }, 1000) 
     },
-    getCode: function () { //获取短信验证码
+    //获取短信验证码
+    getCode: function () {
       if(this.phone.length == 11 && /^((13|14|15|17|18|19)[0-9]{1}\d{8})$/.test(this.phone)){
         if(this.countdown > 0){
           return
@@ -107,8 +109,14 @@ export default {
           alert('error.status' + error.response.status)
       })
     },
+    setData: function () {
+
+    },
     submit: function () {
       let self = this
+      // if(this.canPost == false){
+      //   return
+      // }
       if(this.phone === ''){
         alert('请填写手机号')
         return
@@ -119,6 +127,7 @@ export default {
       }
       this.memberLoginInfo.openid = sessionStorage.getItem('openid')
       this.memberLoginInfo.phone = this.phone
+      // this.canPost = false
       axios({
         method: 'post',
         url: '/bestlifeweb/member/memberLogin',
@@ -128,22 +137,26 @@ export default {
           self.userId = sessionStorage.getItem('userId')
           self.resData = res.data.data
           sessionStorage.setItem("allMember",JSON.stringify(self.resData))
+          
           self.indexForUrlUserId = -1
           self.indexForMemberChooseDefaultUserId = -1
           self.indexForDefaultUser = -1
           
           if(self.resData != null && self.resData.length > 0){
             for(var i = 0; i < self.resData.length; i++){
-              // url上对应的userId下标，有在此代理商注册过
+
               if(self.resData[i].member.userId == self.userId){
+                // url上对应的userId下标，有在此代理商注册过
                 self.indexForUrlUserId = i  
               }
-              // 默认经销商的下标 ，有默认经销商
+
               if(self.resData[i].member.wxDefaultUser == 1){
+                // 默认经销商的下标 ，有默认经销商
                 self.indexForMemberChooseDefaultUserId = i 
               }
-              // 平台给的经销商的下标，在1注册过
+
               if(self.resData[i].member.userId == '1'){
+                // 平台给的经销商的下标，在1注册过
                 self.indexForDefaultUser = i 
               }
             }
@@ -161,8 +174,7 @@ export default {
               // 没有默认的代理商
               if(self.indexForMemberChooseDefaultUserId == -1){
                 // alert('从1进来,没有有默认经销商')
-                var index = self.indexForDefaultUser
-                var member = self.resData[index].member
+                var member = self.resData[self.indexForDefaultUser].member
                 localStorage.setItem('phone', self.memberLoginInfo.phone)
                 sessionStorage.setItem("myInfo",JSON.stringify(member))
                 sessionStorage.setItem("memberId",member.memberId)
@@ -171,8 +183,7 @@ export default {
               }else{
                 // 有默认 进入到默认
                 // alert('从1，进来有默认经销商')
-                var index = self.indexForMemberChooseDefaultUserId
-                var member = self.resData[index].member
+                var member = self.resData[self.indexForMemberChooseDefaultUserId].member
                 localStorage.setItem('phone', self.memberLoginInfo.phone)
                 sessionStorage.setItem("myInfo",JSON.stringify(member))
                 sessionStorage.setItem("memberId",member.memberId)
@@ -188,11 +199,9 @@ export default {
             // 没有在A注册过
             if(self.indexForUrlUserId == -1){
               // 去A注册
-              // alert('从A进来,没有在A注册过')
               self.memberRegister()
               return
             }else{
-              //  有在A注册过，进入a,进入我的页面之后，自动设A为默认
               // alert('从A进来,有在A注册过')
               var member = self.resData[self.indexForUrlUserId].member
               localStorage.setItem('phone', self.memberLoginInfo.phone)
