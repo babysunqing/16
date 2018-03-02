@@ -53,7 +53,7 @@ export default {
           headers: {'Content-Type': 'application/json'},
           data: self.address
         }).then(function (response) {
-          alert('地址修改成功！')
+          alert('修改成功！')
           window.history.go(-1)
         })
         }else{

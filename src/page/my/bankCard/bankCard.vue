@@ -6,6 +6,7 @@
       <h1>{{ item.bankName }}</h1>
       <h2>储蓄卡</h2>
       <h3>{{ item.cardNum }}</h3>
+      <span class="el-icon-edit-outline edit" @click="editCard(item)"></span>
       <span class="el-icon-delete" @click="deleteCard(item)"></span>
       <mt-popup class="popContent" v-model="popup" popup-transition="popup-fade">
         <div>
@@ -51,6 +52,13 @@ export default {
     })
   },
   methods:{
+    editCard:function(item){
+      let EditData = item
+      debugger
+      this.$router.push({name: 'editBankCard', params: {editData: JSON.stringify(EditData)}})
+      // 阻止时间在下传递
+      event.stopPropagation()
+    },
     deleteCard:function(item) {
       this.popup = true
       this.bankcardId = item.bankcardId
@@ -123,6 +131,9 @@ span{
   color: #999;
   margin-top: -.6rem;
   margin-right: .24rem;
+}
+.edit{
+  margin-right: .88rem;
 }
 .popContent{
   width: 5.4rem;

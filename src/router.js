@@ -33,6 +33,8 @@ import editAddress from './page/my/address/editAddress.vue'
 
 import bankCard from './page/my/bankCard/bankCard.vue' //银行卡管理
 import newBankCard from './page/my/bankCard/newBankCard.vue'
+import editBankCard from './page/my/bankCard/editBankCard.vue'
+
 import balanceDetail from './page/my/balanceDetail.vue' //余额明细
 import withdraw from './page/my/withdraw/withdraw.vue' //余额提现
 import withdrawSubmit from './page/my/withdraw/withdrawSubmit.vue' //余额提现申请已提交
@@ -180,6 +182,11 @@ const routes = [
   {
     path: '/newBankCard',             // 银行卡管理 添加银行卡
     component: newBankCard
+  },
+  {
+    name: 'editBankCard',
+    path: '/editBankCard/:editData',             // 银行卡管理 编辑
+    component: editBankCard
   },
   {
     path: '/balanceDetail',             // 余额明细

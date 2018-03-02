@@ -59,7 +59,7 @@ export default {
       this.$router.push({name: 'editAddress', params: {editData: JSON.stringify(EditData)}})
       // 阻止时间在下传递
       event.stopPropagation()
-    },
+    }
   }  
 }
 </script> 

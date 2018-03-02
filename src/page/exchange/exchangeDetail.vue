@@ -45,7 +45,8 @@
 	</div>
 	<div class="fixedBottom">
 		<p>积分:</p>
-		<div class="balance">{{ myInfo.point }}</div>
+		<div class="balance">324342535453456524</div>
+		<!-- <div class="balance">{{ myInfo.point }}</div> -->
 		<div class="buy" @click="buyConfirm(goodsDetail)">立即兑换</div>
 	</div>
 </div>
@@ -279,9 +280,10 @@ export default {
 	background-color: #fff;
 }
 .fixedBottom p{
+	width: 13%;
 	font-size: .32rem;
 	color: #666;
-	margin-left: .24rem;
+	margin-left: 3%;
 	float: left;
 	margin-top: .26rem;
 }
@@ -289,11 +291,13 @@ export default {
 	font-size: .32rem;
 }
 .fixedBottom .balance{
+	width: 46%;
 	font-size: .4rem;
 	color: #ff8452;
 	line-height: .98rem;
 	font-weight: bold;
 	float: left;
+	overflow: hidden;
 }
 .fixedBottom .buy{
 	width: 38%;

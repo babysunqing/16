@@ -46,7 +46,6 @@ export default {
       axios.get('/bestlifeweb/bankcard/getMemberBankcardInfoList?memberId=' + self.memberId)
       .then(function (res) {
         self.bankCard = res.data.data[0]
-        alert(res.data.data[2])
         self.cardNum = self.bankCard.bankcardId
         self.cardNum = self.cardNum.substring(self.cardNum.length-4,self.cardNum.length)
       })

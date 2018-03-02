@@ -60,7 +60,7 @@
 
 	</div>
 	<div class="fixedBottom">
-		<p>余额：</p>
+		<p>余额:</p>
 		<div class="balance"><span>¥</span>{{ myInfo.balance / 100 }}</div>
 		<div class="buy" @click="buyConfirm(goodsDetail)">立即购买</div>
 	</div>
@@ -308,21 +308,24 @@ export default {
 	background-color: #fff;
 }
 .fixedBottom p{
+	width: 13%;
 	font-size: .32rem;
 	color: #666;
-	margin-left: .24rem;
+	margin-left: 3%;
 	float: left;
 	margin-top: .26rem;
 }
 .fixedBottom span{
-	font-size: .32rem;
+	font-size: .34rem;
 }
 .fixedBottom .balance{
+	width: 46%;
 	font-size: .4rem;
 	color: #ff8452;
 	line-height: .98rem;
 	font-weight: bold;
 	float: left;
+	overflow: hidden;
 }
 .fixedBottom .buy{
 	width: 38%;
