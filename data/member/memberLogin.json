@@ -25,54 +25,6 @@
                 "wxDefaultUser": 0
             },
             "seller": null
-        },
-        {
-            "member": {
-                "memberId": "2",
-                "openid": "owwmSt1gxmNNeNEcrZxgi3vjscPg",
-                "phone": "15016500178",
-                "balance": 350000,
-                "firstClassSellerMemberId": "",
-                "secondClassSellerMemberId": "",
-                "userId": "admin1",
-                "point": 888888888,
-                "totalPayoff": 0,
-                "totalPayment": 0,
-                "businessGroupId": "3GI7T0JLHVr6gjCCvJU",
-                "wxNickName": "晴子",
-                "trueName": "",
-                "identificationNumber": "",
-                "freezeMoney": 0,
-                "registerTime": 1516282770,
-                "lastLoginTime": 1516326342,
-                "headUrl": "http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL9xllzbVTvVqgO6DS9Eiby60dObu8KNkZ2pyiazuCGc6T403pLeLufxKBZ5wos8dXrhqNmuTG2dSLw/0",
-                "wxDefaultUser": 1
-            },
-            "seller": null
-        },
-        {
-            "member": {
-                "memberId": "3",
-                "openid": "owwmSt1gxmNNeNEcrZxgi3vjscPg",
-                "phone": "15016500178",
-                "balance": 350000,
-                "firstClassSellerMemberId": "",
-                "secondClassSellerMemberId": "",
-                "userId": "haha",
-                "point": 888888888,
-                "totalPayoff": 0,
-                "totalPayment": 0,
-                "businessGroupId": "3GI7T0JLHVr6gjCCvJU",
-                "wxNickName": "晴子",
-                "trueName": "",
-                "identificationNumber": "",
-                "freezeMoney": 0,
-                "registerTime": 1516282770,
-                "lastLoginTime": 1516326342,
-                "headUrl": "http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL9xllzbVTvVqgO6DS9Eiby60dObu8KNkZ2pyiazuCGc6T403pLeLufxKBZ5wos8dXrhqNmuTG2dSLw/0",
-                "wxDefaultUser": 0
-            },
-            "seller": null
         }
     ]
 }

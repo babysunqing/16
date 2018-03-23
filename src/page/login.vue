@@ -16,11 +16,6 @@
       v-model="userInputCode" />
 
     <span id="loginBtn" @click="getCode()">获取验证码</span>
-
-<!--     <router-link to="/register">  
-      <div class="register">立即注册</div>
-    </router-link> -->
-
     <div class="submit" @click="submit()">提交</div>
     <router-view></router-view>
   </div>
@@ -89,7 +84,8 @@ export default {
       this.memberRegisterInfo.openid = sessionStorage.getItem('openid')
       this.memberRegisterInfo.userId = sessionStorage.getItem('userId')
       this.memberRegisterInfo.userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
-      this.memberRegisterInfo.phone = this.memberLoginInfo.phone
+      this.memberRegisterInfo.phone = this.phone
+
       axios({
         method: 'post',
         url: '/bestlifeweb/member/memberRegister',
@@ -97,9 +93,10 @@ export default {
         data: self.memberRegisterInfo
       }).then(function (res) {
         if(res.data.code == 0){
-          localStorage.setItem('phone', self.memberRegisterInfo.phone)
-          sessionStorage.setItem("myInfo",JSON.stringify(res.data.data))
-          sessionStorage.setItem("memberId",res.data.data.memberId)
+          self.member = res.data.data
+          sessionStorage.setItem("myInfo",JSON.stringify(self.member))
+          sessionStorage.setItem("memberId",self.member.memberId)
+          sessionStorage.setItem("userId",self.member.userId)
           self.$router.replace({path:'/my'})
         }else if(res.data.code == 1){
           alert('errmsg' + res.data.errmsg)
@@ -121,100 +118,24 @@ export default {
         alert('请填写手机号')
         return
       }
-      if(this.identifyingCode != this.userInputCode || this.identifyingCode === ''){
+      if(this.identifyingCode != this.userInputCode || this.identifyingCode == ''){
         alert('验证码输入错误，请重试！')
         return
       }
-      this.memberLoginInfo.openid = sessionStorage.getItem('openid')
-      this.memberLoginInfo.phone = this.phone
-      // this.canPost = false
-      axios({
-        method: 'post',
-        url: '/bestlifeweb/member/memberLogin',
-        headers: {'Content-Type': 'application/json'},
-        data: self.memberLoginInfo
-        }).then(function (res) {
-          self.userId = sessionStorage.getItem('userId')
-          self.resData = res.data.data
-          sessionStorage.setItem("allMember",JSON.stringify(self.resData))
-          
-          self.indexForUrlUserId = -1
-          self.indexForMemberChooseDefaultUserId = -1
-          self.indexForDefaultUser = -1
-          
-          if(self.resData != null && self.resData.length > 0){
-            for(var i = 0; i < self.resData.length; i++){
-
-              if(self.resData[i].member.userId == self.userId){
-                // url上对应的userId下标，有在此代理商注册过
-                self.indexForUrlUserId = i  
-              }
-
-              if(self.resData[i].member.wxDefaultUser == 1){
-                // 默认经销商的下标 ，有默认经销商
-                self.indexForMemberChooseDefaultUserId = i 
-              }
-
-              if(self.resData[i].member.userId == '1'){
-                // 平台给的经销商的下标，在1注册过
-                self.indexForDefaultUser = i 
-              }
-            }
-          }
-
-          // 从公众号进入
-          if(self.userId == '1'){
-            // 没有注册过
-            if(self.resData == null || self.resData.length == 0){
-              // 到1 代理商注册
-              self.memberRegister()
-              return
-            }else{
-              // 有注册过，判断有没有默认代理商
-              // 没有默认的代理商
-              if(self.indexForMemberChooseDefaultUserId == -1){
-                // alert('从1进来,没有有默认经销商')
-                var member = self.resData[self.indexForDefaultUser].member
-                localStorage.setItem('phone', self.memberLoginInfo.phone)
-                sessionStorage.setItem("myInfo",JSON.stringify(member))
-                sessionStorage.setItem("memberId",member.memberId)
-                sessionStorage.setItem("userId",member.userId)
-                self.$router.replace({path:'/my'})
-              }else{
-                // 有默认 进入到默认
-                // alert('从1，进来有默认经销商')
-                var member = self.resData[self.indexForMemberChooseDefaultUserId].member
-                localStorage.setItem('phone', self.memberLoginInfo.phone)
-                sessionStorage.setItem("myInfo",JSON.stringify(member))
-                sessionStorage.setItem("memberId",member.memberId)
-                sessionStorage.setItem("userId",member.userId)
-                self.$router.replace({path:'/my'})
-                return
-              }
-            }
-          }
-
-          // 从其他经销商进来，比如A
-          if(self.userId != '1'){
-            // 没有在A注册过
-            if(self.indexForUrlUserId == -1){
-              // 去A注册
-              self.memberRegister()
-              return
-            }else{
-              // alert('从A进来,有在A注册过')
-              var member = self.resData[self.indexForUrlUserId].member
-              localStorage.setItem('phone', self.memberLoginInfo.phone)
-              sessionStorage.setItem("myInfo",JSON.stringify(member))
-              sessionStorage.setItem("memberId",member.memberId)
-              sessionStorage.setItem("userId",member.userId)
-              self.$router.replace({path:'/my'})
-              return
-            }
-          }
-        }).catch(function(error){
+      axios.get('/bestlifeweb/member/memberLogin?phone=' + this.phone).then(function (res) {
+        localStorage.setItem('phone', self.phone)
+        if(res.data.code == 0){
+            self.member = res.data.data[0].member
+            sessionStorage.setItem("myInfo",JSON.stringify(self.member))
+            sessionStorage.setItem("memberId",self.member.memberId)
+            sessionStorage.setItem("userId",self.member.userId)
+            self.$router.replace({path:'/my'})
+        }else if(res.data.code == 1){
+            self.memberRegister()
+        }
+      }).catch(function(error){
           alert(JSON.stringify(error.response.data))
-        })
+      })
     }
   }
 }

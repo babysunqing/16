@@ -106,9 +106,12 @@ export default {
   },
   created () {
     let self = this
-    if(sessionStorage.getItem('myInfo') != null){
-    	this.myInfo = JSON.parse(sessionStorage.getItem('myInfo'))
-    }
+    this.phone = localStorage.getItem('phone')
+    axios.get('/bestlifeweb/member/memberLogin?phone=' + this.phone).then(function (res) {
+      self.myInfo = res.data.data[0].member
+    }).catch(function(error){
+        alert(JSON.stringify(error.response.data))
+    })
     this.goodsId = this.$route.params.id
     axios.get('/bestlifeweb/goods/goodsDetail?goodsId=' + self.goodsId).then(function (res) {
         self.goodsDetail = res.data.data
@@ -148,12 +151,6 @@ export default {
     },
     isLogin: function () {
 		let self = this
-		if(sessionStorage.getItem('myInfo') != null){
-			if(JSON.parse(sessionStorage.getItem('myInfo')).userId == '1'){
-				alert('请联系业务员切换经销商')
-				return
-			}
-		}
 		this.rootOrderVo.goodsId = this.goodsDetail.goodsId
 		this.rootOrderVo.orderDesc = this.goodsDetail.goodsName
 		this.rootOrderVo.orderNum = this.goodsNum
@@ -167,8 +164,8 @@ export default {
 		}).then(function (res) {
 			self.rootOrder = res.data.data          			    		
 	    	self.popupBuy = true
-		}).catch(function(err){
-          alert(err)
+		}).catch(function(error){
+          alert(JSON.stringify(error.response.data))
       	})  
     }
   }  

@@ -1,5 +1,6 @@
 <template>
 <div class="container" v-title="'编辑银行卡'">
+<div class="main">
   <input class="nameInput name" 
     type="text" name=""
     placeholder="姓名"
@@ -22,7 +23,9 @@
   <input class="nameInput city" 
    type="text" name="" 
    placeholder="银行卡号"
-   v-model="bankcard.bankcardId"  >
+   v-model="bankcard.bankcardId" 
+   pattern="[0-9]*" 
+   onkeyup="this.value=this.value.replace(/[^\w]/g,'');" >
 
 
 
@@ -34,7 +37,7 @@
    <input class="nameInput openBankName2" 
    type="text" name="" 
    placeholder="开户行所在城市"
-   v-model="bankcard.openBankName2"  >
+   v-model="bankcard.openBankName2">
 
    <input class="nameInput openBankName3" 
    type="text" name="" 
@@ -44,11 +47,11 @@
 
 
   <input class="nameInput address"  
-    type="text" 
+    type="number" 
     name="" 
     placeholder="银行卡预留手机号" 
-    v-model="bankcard.bankcardPhone" >
-
+    v-model="bankcard.bankcardPhone" pattern="[0-9]*">
+</div>
   <div class="fixedBottom"  @click="submit()">保存</div>
 </div>
 </template>
@@ -109,7 +112,7 @@ export default {
         alert('请选择银行卡!')
         return
       }    
-      if(this.bankcard.bankcardId == '' || this.bankcard.bankcardId.length > 25){
+      if(this.bankcard.bankcardId == '' || this.bankcard.bankcardId.length > 20){
         alert('请输入正确的银行卡号!')
         return
       }
@@ -160,10 +163,16 @@ export default {
 <style scoped>
 .container{
   width: 100%;
-  height: 100%;
-  overflow: auto;
+}
+.main{
+  width: 100%;
   background-color: #fff;
   -webkit-overflow-scrolling : touch;
+  position:absolute;
+  top:0px;
+  bottom:.8rem;
+  overflow-y: scroll;
+  margin-bottom: .6rem;
 }
 .nameInput{
   outline: none;

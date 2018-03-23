@@ -57,22 +57,13 @@ export default {
   },
   created(){
     let self = this
-    this.memberLoginInfo.phone = localStorage.getItem('phone')
-    this.memberLoginInfo.openid = sessionStorage.getItem('openid')
-    axios({
-      method: 'post',
-      url: '/bestlifeweb/member/memberLogin',
-      headers: {'Content-Type': 'application/json'},
-      data: self.memberLoginInfo
-    }).then(function (res) {
-      self.myInfo = res.data.data
-      self.userId = JSON.parse(sessionStorage.getItem('myInfo')).userId
-      for(var i = 0; i < self.myInfo.length; i++){
-        if(self.myInfo[i].member.userId == self.userId){
-          self.balance = self.myInfo[i].member.balance
-        }
-      }
-
+    this.phone = localStorage.getItem('phone')
+    axios.get('/bestlifeweb/member/memberLogin?phone=' + this.phone).then(function (res) {
+      self.myInfo = res.data.data[0].member
+      self.balance = self.myInfo.balance
+      sessionStorage.setItem("myInfo",JSON.stringify(self.myInfo))
+    }).catch(function(error){
+        alert(JSON.stringify(error.response.data))
     })
   },
   methods:{

@@ -45,8 +45,7 @@
 	</div>
 	<div class="fixedBottom">
 		<p>积分:</p>
-		<div class="balance">324342535453456524</div>
-		<!-- <div class="balance">{{ myInfo.point }}</div> -->
+		<div class="balance">{{ myInfo.point }}</div>
 		<div class="buy" @click="buyConfirm(goodsDetail)">立即兑换</div>
 	</div>
 </div>
@@ -82,9 +81,14 @@ export default {
   },
   created () {
     let self = this
-	if(sessionStorage.getItem('myInfo') != null){
-    	this.myInfo = JSON.parse(sessionStorage.getItem('myInfo'))
-    }
+    this.phone = localStorage.getItem('phone')
+    axios.get('/bestlifeweb/member/memberLogin?phone=' + this.phone).then(function (res) {
+      self.myInfo = res.data.data[0].member
+      sessionStorage.setItem("myInfo",JSON.stringify(self.myInfo))
+    }).catch(function(error){
+        alert(JSON.stringify(error.response.data))
+    })
+
     this.goodsId = this.$route.params.id
     axios.get('/bestlifeweb/goods/goodsDetail?goodsId=' + self.goodsId).then(function (res) {
         self.goodsDetail = res.data.data

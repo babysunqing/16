@@ -55,115 +55,13 @@ export default {
       exchangeImg: './static/tab_icon_exchange_n.png',
       myImg: './static/tab_icon_me_n.png' ,
       memberLoginInfo:{
-        openid:'',
-        type: 'wx'
-      },
-      indexForUrlUserId: -1,
-      indexForMemberChooseDefaultUserId: -1,
-      indexForDefaultUser: -1
+        openid:''
+      }
     }
   },
   methods: {
     isLogin: function () {
-      // 本地没有缓存过phone，跳转去登陆或注册
-      if(localStorage.getItem('phone') == null){
-        this.$router.replace({name: 'login'})
-      }else{
-        // 有缓存手机号，说明已经注册或登录过，这时候就去请求登录接口，看有没有返回相同的userId，
-        // 有，就让他进入这个userId，没有就去在此userId下注册
-        let self = this
-        this.memberLoginInfo.phone = localStorage.getItem('phone')
-        this.memberLoginInfo.openid = sessionStorage.getItem('openid')
-        axios({
-          method: 'post',
-          url: '/bestlifeweb/member/memberLogin',
-          headers: {'Content-Type': 'application/json'},
-          data: self.memberLoginInfo
-        }).then(function (res) {
-          self.userId = sessionStorage.getItem('userId')
-          self.resData = res.data.data
-          sessionStorage.setItem("allMember",JSON.stringify(self.resData))
-
-          self.indexForUrlUserId = -1
-          self.indexForMemberChooseDefaultUserId = -1
-          self.indexForDefaultUser = -1
-          
-          if(self.resData != null && self.resData.length > 0){
-            // 初始化
-            for(var i = 0; i < self.resData.length; i++){
-              // url上对应的userId下标，有在此代理商注册过
-              if(self.resData[i].member.userId == self.userId){
-                self.indexForUrlUserId = i  
-              }
-              // 默认经销商的下标 ，有默认经销商
-              if(self.resData[i].member.wxDefaultUser == 1){
-                self.indexForMemberChooseDefaultUserId = i 
-              }
-              // 平台给的经销商的下标，在1注册过
-              if(self.resData[i].member.userId == '1'){
-                self.indexForDefaultUser = i 
-              }
-            }
-          }
-
-          // 从公众号进入
-          if(self.userId == '1'){
-            // 没有注册过
-            if(self.resData == null || self.resData.length == 0){
-              // 到1 代理商注册
-              self.$router.push({path:'/login'})
-              return
-            }else{
-              // 有注册过，判断有没有默认代理商
-              // 没有默认的代理商
-              if(self.indexForMemberChooseDefaultUserId == -1){
-                // 进入到1
-                // alert('从1进来,没有有默认经销商')
-                var index = self.indexForDefaultUser
-                var member = self.resData[index].member
-                sessionStorage.setItem("myInfo",JSON.stringify(member))
-                sessionStorage.setItem("memberId",member.memberId)
-                sessionStorage.setItem("userId",member.userId)
-                self.$router.push({path:'/my'})
-              }else{
-                // 有默认 进入到默认
-                // alert('从1，进来有默认经销商')
-                var index = self.indexForMemberChooseDefaultUserId
-
-                var member = self.resData[index].member
-                sessionStorage.setItem("myInfo",JSON.stringify(member))
-                sessionStorage.setItem("memberId",member.memberId)
-                sessionStorage.setItem("userId",member.userId)
-                self.$router.push({path:'/my'})
-                return
-              }
-            }
-          }
-
-          // 从其他经销商进来，比如A
-          if(self.userId != '1'){
-            // 没有在A注册过
-            if(self.indexForUrlUserId == -1){
-              // 去A注册
-              // alert('从A进来,没有在A注册过')
-              self.$router.push({path:'/login'})
-              return
-            }else{
-              //  有在A注册过，进入a,进入我的页面之后，自动设A为默认
-              // alert('从A进来,有在A注册过')
-              var member = self.resData[self.indexForUrlUserId].member
-              sessionStorage.setItem("myInfo",JSON.stringify(member))
-              sessionStorage.setItem("memberId",member.memberId)
-              sessionStorage.setItem("userId",member.userId)
-              self.$router.push({path:'/my'})
-              return
-            }
-          }
-        }).catch(function(err){
-            alert(err)
-        })
-      }  
-      
+      this.$router.push({path:'/my'})
     },
     hoverBgInfo : function(type){
       if( type === 'index' ){

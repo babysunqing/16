@@ -97,41 +97,10 @@
           <img src="../assets/next_icon.png">
         </div>
       </router-link>
-
-    
-      <div class="item" @click="showPop()" style="margin-top:.24rem">
-        <div class="title">更改默认经销商</div>
-        <img src="../assets/next_icon.png">
-      </div>
-
-      <div class="item" @click="showSwitch()">
-        <div class="title">切换账号</div>
-        <img src="../assets/next_icon.png">
-      </div>
     </div>
     <div class="exit" @click="logOff()">退出登录</div>
 
 
-    <mt-popup class="popContent" v-model="popupChange" popup-transition="popup-fade">
-        <div>
-          <h1>点击设置默认经销商</h1>
-          <div v-for="item in allMember">
-            <p v-if="item.member.wxDefaultUser == 1" @click="change(item)" style="color:#333"> 默认经销商：{{item.member.userName }}</p>
-            <p v-if="item.member.wxDefaultUser == 0 && item.member.userId != 1" @click="change(item)"> {{item.member.userName }}</p>
-          </div >
-        </div>
-      </mt-popup>
-
-
-    <mt-popup class="popContent" v-model="popupSwitch" popup-transition="popup-fade">
-      <div>
-        <h1>选择你想进入的经销商</h1>
-        <div v-for="item in allMember">
-          <p v-if="item.member.userId == userId" style="color:#333"> 当前所在经销商：{{item.member.userName }}</p>
-          <p v-if="item.member.userId && item.member.userId != 1 && item.member.userId != userId" @click="Relogin(item)">{{item.member.userName }}</p>
-        </div>
-      </div>
-    </mt-popup>
     
   </div>
   <tabbar ref="tabbar"></tabbar>
@@ -148,119 +117,29 @@ export default {
   },
   data () {
     return {
-      popupChange: false,
-      popupSwitch: false,
-      myInfo:{
-        balance:'0',
-        headUrl:'',
-        point:'0'
-      },
-      allUserId:[],
-      allMember:[],
-      userId:''
+      myInfo:{}
     }
   },
   created () {
     let self = this
-    this.myInfo = JSON.parse(sessionStorage.getItem('myInfo'))
-    this.userId = this.myInfo.userId
-    sessionStorage.setItem('userId', this.userId)
-    this.wxDefaultUser = this.myInfo.wxDefaultUser
-    if(this.userId != '1' && this.wxDefaultUser == 0){
-      this.memberId = this.myInfo.memberId 
-      axios.get('/bestlifeweb/member/setDefaultWXUserId?memberId=' + self.memberId + '&isReset=' + false)
-      .then(function (res) {
-        // alert('已设置默认经销商')
-      })
-      .catch(function(err){
-          alert(err.message)
-          alert(err.reponse.data)
-      })
-    }
-
-    axios.get('/bestlifeweb/user/getUserInfo')
-    .then(function (res) {
-      self.allMember = JSON.parse(sessionStorage.getItem('allMember'))
-      self.allUserId = res.data.data
-      for(var i = 0; i < self.allMember.length; i++ ){
-        for(var j = 0; j < self.allUserId.length; j++ ){
-          if(self.allMember[i].member.userId == self.allUserId[j].userId){
-            self.allMember[i].member.userName = self.allUserId[j].userName
-          }
-        }
-      }
+    this.phone = localStorage.getItem('phone')
+    axios.get('/bestlifeweb/member/memberLogin?phone=' + this.phone).then(function (res) {
+      self.myInfo = res.data.data[0].member
+      sessionStorage.setItem("myInfo",JSON.stringify(self.myInfo))
+    }).catch(function(error){
+        alert(JSON.stringify(error.response.data))
     })
-    .catch(function(err){
-    })
-
   },
   methods:{
     logOff:function(){
       localStorage.clear()
       sessionStorage.removeItem('myInfo')
       this.$router.push({path:'/login'})
-    },
-    alertTips:function ( ) {
-      alert('请联系促销员！')
-    },
-    showPop: function(){
-      this.popupChange = true
-    },
-    change:function(item){
-      let self = this
-      this.memberId = item.member.memberId
-      axios.get('/bestlifeweb/member/setDefaultWXUserId?memberId=' + self.memberId + '&isReset=' + false)
-      .then(function (res) {
-        alert('已设置')
-        self.popupChange = false
-      })
-      .catch(function(err){
-          alert(err)
-      })
-    },
-    showSwitch:function(){
-      this.popupSwitch = true
-    },
-    Relogin:function(item){
-      sessionStorage.setItem("userId",item.member.userId)
-      sessionStorage.setItem("myInfo",JSON.stringify(item.member))
-      this.getUserInfo()
-      window.location.reload()
-    },
-    getUserInfo:function(){
-      let self = this
-      this.userId = JSON.parse(sessionStorage.getItem('myInfo')).userId
-      axios.get('/bestlifeweb/user/getUserInfo?userId=' + self.userId).then(function (res) {
-          self.dataList = res.data.data
-          sessionStorage.setItem("takegoodsRateOnLotterySuccess",self.dataList[0].takegoodsRateOnLotterySuccess)
-          sessionStorage.setItem("refundRateOnLotterySuccess",self.dataList[0].refundRateOnLotterySuccess)   
-          sessionStorage.setItem("pointMoneyExchangeRate",self.dataList[0].pointMoneyExchangeRate)
-          sessionStorage.setItem("lotteryRate",self.dataList[0].lotteryRate)
-      }).catch(function(err){
-          alert(err)
-      })
     }
   },
   mounted (){
     let self = this
     self.$refs.tabbar.hoverBgInfo('my')
-
-    this.myInfo = JSON.parse(sessionStorage.getItem('myInfo'))
-    this.userId = this.myInfo.userId
-    sessionStorage.setItem('userId', this.userId)
-    this.wxDefaultUser = this.myInfo.wxDefaultUser
-    if(this.userId != '1' && this.wxDefaultUser == 0){
-      this.memberId = this.myInfo.memberId 
-      axios.get('/bestlifeweb/member/setDefaultWXUserId?memberId=' + self.memberId + '&isReset=' + false)
-      .then(function (res) {
-        // alert('已设置默认经销商')
-      })
-      .catch(function(err){
-          alert(err.message)
-          alert(err.reponse.data)
-      })
-    }
-
   }
 }
 </script> 

@@ -4,7 +4,7 @@
     <p class="name">账户金额：<span>{{ myInfo.balance / 100}}元</span></p>
 
     <p class="card">充值金额：</p>
-    <input class="nameInput"  type="number"  name="" placeholder="请输入充值金额" v-model="createWXPaymentVo.payNum" />
+    <input class="nameInput"  type="number"  name="" placeholder="请输入充值金额" v-model="payNum" />
 
     <div class="moneyContent one" @click="userInput(num[0])">{{ num[0] }}元</div>
     <div class="moneyContent" @click="userInput(num[1])">{{ num[1] }}元</div>
@@ -32,10 +32,11 @@ export default {
   data () {
     return {
       num: [100, 200, 500, 1000, 2000, 5000] ,
+      payNum:'',
       createWXPaymentVo: {
         memberId: '',
         memberPayNum: 0,
-        payNum:''
+        openId:''
       },
       myInfo:{
         balance: 0
@@ -49,27 +50,29 @@ export default {
     }
 
     this.url = 'http://16.21d.me/bestlifeweb/html/index.html'
+    // this.url = 'http://test1.21d.me/bestlifeweb/html/index.html'
     this.url = encodeURI(encodeURI(Base64.encode(this.url)))
     axios.get('/bestlifeweb/member/jssdkConfigHelper?url=' + self.url).then(function (res) {
       self.data = res.data.data
       wx.config({
-          debug: false,
+          debug: true,
           appId: self.data.appId,
           timestamp:self.data.timestamp,
           nonceStr: self.data.noncestr,
           signature: self.data.signature,
           jsApiList: ['chooseWXPay']
       })
-    }).catch(function(err){
-        alert(err.response.data)
+    }).catch(function(error){
+        alert(JSON.stringify(error.response.data))
       })
 
   },
   methods:{
     userInput: function (num) {
-      this.createWXPaymentVo.payNum = num
+      this.payNum = num
     },
     submit: function () {
+      // debugger
       if(sessionStorage.getItem('myInfo') != null && JSON.parse(sessionStorage.getItem('myInfo')).userId == '1'){
           alert('在此经销商下无法使用此功能')
           return
@@ -78,13 +81,13 @@ export default {
         alert('请登录后再充值')
         return
       }
-      if (this.createWXPaymentVo.payNum == null || this.createWXPaymentVo.payNum == 0) {
+      if (this.payNum == null || this.payNum == 0) {
         alert('输入金额有误')
         return
       }
-      this.createWXPaymentVo.memberPayNum = parseFloat(this.createWXPaymentVo.payNum) * 100     
+      this.createWXPaymentVo.memberPayNum = parseFloat(this.payNum) * 100     
       this.createWXPaymentVo.memberId = JSON.parse(sessionStorage.getItem('myInfo')).memberId
-      // alert(this.createWXPaymentVo.memberId)
+      this.createWXPaymentVo.openId = sessionStorage.getItem('openid')
       let self = this
       axios({
         method: 'post',
@@ -92,7 +95,6 @@ export default {
         headers: {'Content-Type': 'application/json'},
         data: self.createWXPaymentVo
       }).then(function (res) {
-
         wx.chooseWXPay({
           appId: res.data.data.appId,
           timestamp: res.data.data.timeStamp,
@@ -111,12 +113,10 @@ export default {
           },
           cancel: function(res) {
               alert('支付取消')
-          }  
+          }
         })
-
-        // self.$router.replace({name: 'reChargeSuccess', params: {memberPayInfo:JSON.stringify(self.memberPayInfo)}})
-      }).catch(function(err){
-          alert(err)
+      }).catch(function(error){
+          alert(JSON.stringify(error.response.data))
       })
     }
   }  

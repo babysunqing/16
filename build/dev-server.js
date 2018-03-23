@@ -62,7 +62,7 @@ app.get('/bestlifeweb/memberCashFlow/getMemberCashFlowList', function(req,res){
 })
 
 var memberLogin = require('../data/member/memberLogin.json')
-app.post('/bestlifeweb/member/memberLogin', function(req,res){
+app.get('/bestlifeweb/member/memberLogin', function(req,res){
   res.json(memberLogin); 
 })
 

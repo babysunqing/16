@@ -81,7 +81,9 @@ export default {
       }).then(function (response) {
         alert('提货成功！')
         window.history.go(-1)
-      })
+      }).catch(function(error){
+          alert(JSON.stringify(error.response.data))
+        }) 
     }
   }  
 }
