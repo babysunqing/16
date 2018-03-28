@@ -78,7 +78,7 @@ export default {
         return
       }
       if(this.lotteryFromRootOrderVo.lotteryOddEvenChoose == ''){
-        alert('请先选择红包！')
+        alert('请先选择鸡藕！')
         return
       }
       this.hiddenBotton = false

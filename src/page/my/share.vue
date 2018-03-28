@@ -24,7 +24,10 @@ export default {
     this.urlInfo.firstClassSellerMemberId = JSON.parse(sessionStorage.getItem('myInfo')).memberId
     this.state = Base64.encode(JSON.stringify(this.urlInfo))
     
-    this.text1 = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe2ea6975588ca6a0&redirect_uri=http://16.21d.me/bestlifeweb/html/index.html&response_type=code&scope=snsapi_userinfo&state='
+    this.text1 = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3fe5b092e95d247b&redirect_uri=http://test1.21d.me/bestlifeweb/html/index.html&response_type=code&scope=snsapi_userinfo&state='
+
+    // this.text1 = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe2ea6975588ca6a0&redirect_uri=http://16.21d.me/bestlifeweb/html/index.html&response_type=code&scope=snsapi_userinfo&state='
+    
     this.text2 = '#wechat_redirect'
     this.param = this.text1 + this.state +this.text2
     this.param = encodeURIComponent(this.param)

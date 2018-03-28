@@ -168,7 +168,7 @@ export default {
 .left,.middle,.right{
   flex: 1;
   text-align: center;
-
+  overflow: hidden;
 }
 .user h1{
   font-size: .28rem;
@@ -191,6 +191,10 @@ export default {
   padding: .02rem;
   margin-left: 32%;
 }
+.middel{
+  width: 27%;
+  text-align: center;
+}
 .middel img{
   width: 1.3rem;
   height: 1.3rem;
@@ -198,12 +202,13 @@ export default {
   margin-top: .5rem;
 }
 .middel p{
-  width: 1.3rem;
+  width: 100%;
+  height: .4rem;
+  line-height: .4rem;
   text-align: center;
   font-size: .3rem;
   color: #fff;
   margin-top: -.1rem;
-  height: .45rem;
   overflow: hidden;
 }
 .item{

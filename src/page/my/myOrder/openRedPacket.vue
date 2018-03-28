@@ -129,7 +129,6 @@ export default {
       }
     },
     submitRoot: function(){
-      debugger
       var rootOrder = JSON.parse(this.$route.params.rootOrder)
       var lotteryRate = sessionStorage.getItem('lotteryRate')/100
       if(this.balance < rootOrder.payPrice * rootOrder.orderNum * lotteryRate ){
